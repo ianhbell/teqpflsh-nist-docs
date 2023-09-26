@@ -8,11 +8,10 @@ jobs:
     steps:
       - uses: usnistgov/NISTtheDocs2Death@0.4
         with:
-          docs-folder: externals/teqp/doc/
-          conda-environment: externals/teqp/doc/environment.yml
+          docs-folder: teqp/doc/
+          conda-environment: environment.yml
           pre-build-command: |-
-            chdir externals/teqp/doc/source
-            python sphinx_pre_run.py
+            python prepare_build.py
           formats: |-
             epub
             pdf
