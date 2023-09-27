@@ -16,6 +16,8 @@ jobs:
           conda-environment: externals/teqp/doc/environment.yml
           pre-build-command: |-
             python prepare_build.py
+            cd externals/teqp/doc/source
+            python sphinx_pre_run.py
           formats: |-
             epub
             pdf
