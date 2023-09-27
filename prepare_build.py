@@ -13,17 +13,17 @@ here = os.path.dirname(__file__)
 # or build from source ???
 print('Finished prepare_build.py')
 
+# Copy back from doc-BORGED into doc some files that need to be in specific places
 os.makedirs("externals/teqp/doc/source/_static", exist_ok=True)
 os.makedirs("externals/teqp/doc-BORGED/source/_static", exist_ok=True)
 shutil.copy2("externals/teqp/doc-BORGED/macros.tex", "externals/teqp/doc")
 
+# And now run doxygen and execute jupyter notebooks
 os.chdir('externals/teqp/doc-BORGED/source')
-
-import sys
 sys.path.append(os.path.abspath(os.curdir))
-
 import sphinx_pre_run
 sphinx_pre_run.run()
 
+# And move the doxygen docs back where they are needed in the doc-BORGED tree
 os.chdir(os.path.dirname(__file__))
 shutil.move("externals/teqp/doc/source/_static/doxygen", "externals/teqp/doc-BORGED/source/_static/doxygen")
