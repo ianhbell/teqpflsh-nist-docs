@@ -15,12 +15,12 @@ jobs:
           docs-folder: externals/teqp/doc/
           conda-environment: externals/teqp/doc/environment.yml
           pre-build-command: |-
-            python prepare_build.py
-            mkdir -p externals/teqp/doc/source/_static
-            mkdir -p externals/teqp/doc-BORGED/source/_static
-            cd externals/teqp/doc-BORGED/source
-            cp ../macros.tex ../../doc
-            python sphinx_pre_run.py
+            python prepare_build.py && 
+            mkdir -p externals/teqp/doc/source/_static && 
+            mkdir -p externals/teqp/doc-BORGED/source/_static && 
+            cd externals/teqp/doc-BORGED/source && 
+            cp ../macros.tex ../../doc && 
+            python sphinx_pre_run.py &&
             mv ../../doc/source/_static/doxygen _static/doxygen
           formats: |-
             epub
