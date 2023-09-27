@@ -6,10 +6,14 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: checkout submodules
+        run: git submodule update --init --recursive
       - uses: usnistgov/NISTtheDocs2Death@0.4
         with:
-          docs-folder: teqp/doc/
-          conda-environment: environment.yml
+          docs-folder: externals/teqp/doc/
+          conda-environment: externals/teqp/doc/environment.yml
           pre-build-command: |-
             python prepare_build.py
           formats: |-
