@@ -5,8 +5,6 @@ on: [push, pull_request, delete]
 jobs:
   docs:
     runs-on: ubuntu-latest
-    env:
-      ACTIONS_STEP_DEBUG: true
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -27,5 +25,3 @@ jobs:
           formats: |-
             epub
             pdf
-        env:
-          ACTIONS_STEP_DEBUG: true
