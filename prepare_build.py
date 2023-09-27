@@ -8,6 +8,6 @@ import subprocess, os, sys
 here = os.path.dirname(__file__)
 
 # pip install teqp
-subprocess.check_call([sys.executable, '-m','pip','install teqp'])
+subprocess.check_call([sys.executable, '-m','pip','install teqp'], shell=True)
 
 # or build from source ???
