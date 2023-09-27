@@ -14,8 +14,8 @@ jobs:
         with:
           docs-folder: externals/teqp/doc/
           conda-environment: externals/teqp/doc/environment.yml
-          pre-build-command: |-
-            python prepare_build.py 
+          pre-build-command: 
+            python prepare_build.py
           formats: |-
             epub
             pdf
