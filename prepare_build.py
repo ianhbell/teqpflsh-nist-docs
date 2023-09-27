@@ -11,3 +11,4 @@ here = os.path.dirname(__file__)
 subprocess.check_call([sys.executable, '-m','pip','install teqp'], shell=True)
 
 # or build from source ???
+print('Finished prepare_build.py')
