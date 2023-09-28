@@ -16,6 +16,8 @@ jobs:
           conda-environment: externals/teqp/doc/environment.yml
           pre-build-command: 
             python prepare_build.py
+          post-build-command: 
+            cp externals/teqp/doc-BORGED/build/latex/teqp.pdf externals/teqp/doc-BORGED/build/latex/teqp-docs.pdf
           formats: |-
             epub
             pdf
