@@ -9,7 +9,7 @@ dependencies:
   - cmake
   - pandoc
   - sympy
-  - ghostscript
+  - sphinx==7.2.6
   - pip:
     - breathe
     - teqp
@@ -25,4 +25,3 @@ dependencies:
     - sphinxcontrib-doxylink
     - insipid-sphinx-theme
     - CoolProp
-    - sphinx

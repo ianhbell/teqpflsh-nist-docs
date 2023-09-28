@@ -13,7 +13,7 @@ jobs:
       - uses: ianhbell/NISTtheDocs2Death@main
         with:
           docs-folder: externals/teqp/doc/
-          conda-environment: externals/teqp/doc/environment.yml
+          conda-environment: environment.yml
           apt-packages: texlive-font-utils
           pre-build-command: 
             python prepare_build.py
