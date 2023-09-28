@@ -15,10 +15,9 @@ jobs:
           docs-folder: externals/teqp/doc/
           conda-environment: environment.yml
           apt-packages: texlive-font-utils
-          pre-build-command: 
-            python prepare_build.py
-          post-build-command: 
-            cp externals/teqp/doc-BORGED/build/latex/teqp.pdf externals/teqp/doc-BORGED/build/latex/teqp-docs.pdf
+          pre-borg-command: conda install sphinx==7.2.6
+          pre-build-command: python prepare_build.py 
+          post-build-command:  cp externals/teqp/doc-BORGED/build/latex/teqp.pdf externals/teqp/doc-BORGED/build/latex/teqp-docs.pdf
           formats: |-
             epub
             pdf
