@@ -14,10 +14,10 @@ jobs:
         with:
           docs-folder: externals/teqp/doc/
           conda-environment: externals/teqp/doc/environment.yml
+          build-pdf-command: 
+            rm -rf build/latex && make latexpdf -e && cp build/latex/teqp-docs.pdf build/latex/teqp.pdf
           pre-build-command: 
             python prepare_build.py
-          post-build-command: 
-            cp externals/teqp/doc-BORGED/build/latex/teqp.pdf externals/teqp/doc-BORGED/build/latex/teqp-docs.pdf
           formats: |-
             epub
             pdf
