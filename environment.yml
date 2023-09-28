@@ -13,7 +13,6 @@ dependencies:
   - scipy
   - matplotlib
   - nbconvert
-  - breathe
   - sphinx==7.2.6
   - pillow
   - gitpython
