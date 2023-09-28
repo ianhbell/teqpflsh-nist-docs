@@ -13,9 +13,9 @@ jobs:
       - uses: ianhbell/NISTtheDocs2Death@main
         with:
           docs-folder: externals/teqp/doc/
-          conda-environment: environment.yml
           apt-packages: texlive-font-utils
-          pre-borg-command: conda install sphinx==7.2.6
+          conda-environment: environment.yml
+          pre-borg-command: conda install python=3.10
           pre-build-command: python prepare_build.py 
           post-build-command:  cp externals/teqp/doc-BORGED/build/latex/teqp.pdf externals/teqp/doc-BORGED/build/latex/teqp-docs.pdf
           formats: |-
