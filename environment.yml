@@ -9,19 +9,20 @@ dependencies:
   - cmake
   - pandoc
   - sympy
+  - numpy 
+  - pandas
+  - scipy
+  - matplotlib
+  - nbconvert
+  - breathe
   - sphinx==7.2.6
+  - pillow
+  - gitpython
+  - packaging
+  - github-action-utils
+  - nbsphinx
   - pip:
-    - breathe
     - teqp
-    - numpy
-    - scipy
-    - jupyter
-    - notebook
-    - nbconvert
-    - nbsphinx
-    - pandas
-    - matplotlib
     - PCSAFTsuperanc
     - sphinxcontrib-doxylink
-    - insipid-sphinx-theme
     - CoolProp
