@@ -3,6 +3,7 @@ name: teqpdocs_ntd2d
 channels:
   - conda-forge
 dependencies:
+  - python==3.10
   - pip
   - doxygen
   - cmake

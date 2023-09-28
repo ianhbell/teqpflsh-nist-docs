@@ -15,7 +15,7 @@ jobs:
           docs-folder: externals/teqp/doc/
           apt-packages: texlive-font-utils
           conda-environment: environment.yml
-          pre-borg-command: conda install python=3.10
+          pre-borg-command: conda remove --all && conda env update --file environment.yml --solver libmamba
           pre-build-command: python prepare_build.py 
           post-build-command:  cp externals/teqp/doc-BORGED/build/latex/teqp.pdf externals/teqp/doc-BORGED/build/latex/teqp-docs.pdf
           formats: |-
