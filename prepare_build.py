@@ -7,8 +7,6 @@ and a conda environment is loaded
 import subprocess, os, sys, shutil
 here = os.path.dirname(__file__)
 
-# pip install teqp
-
 subprocess.check_call('conda remove --all', shell=True)
 subprocess.check_call('conda env update --file environment.yml --solver libmamba', shell=True)
 
