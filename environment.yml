@@ -8,21 +8,18 @@ dependencies:
   - doxygen
   - cmake
   - pandoc
-  
-  - sympy
-  - numpy 
-  - pandas
-  - scipy
-  - matplotlib
-  
-  - jupyter 
-  - notebook
-  - nbconvert
-  
-  - sphinx==7.2.6
-  - nbsphinx
   - pip:
+    - sympy
+    - numpy 
+    - pandas
+    - scipy
+    - matplotlib
     - teqp
     - PCSAFTsuperanc
     - sphinxcontrib-doxylink
     - CoolProp
+    - jupyter 
+    - notebook
+    - nbconvert
+    - sphinx==7.2.6
+    - nbsphinx
