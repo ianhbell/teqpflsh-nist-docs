@@ -6,6 +6,7 @@ and a conda environment is loaded
 
 import subprocess, os, sys, shutil
 here = os.path.dirname(__file__)
+print(os.environ)
 
 # https://stackoverflow.com/a/70129189
 subprocess.check_call("conda list|awk 'NR>3 {print $1}'|tr '\n' ' '", shell=True)
