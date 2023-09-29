@@ -8,17 +8,18 @@ dependencies:
   - doxygen
   - cmake
   - pandoc
+  
   - sympy
   - numpy 
   - pandas
   - scipy
   - matplotlib
+  
+  - jupyter 
+  - notebook
   - nbconvert
+  
   - sphinx==7.2.6
-  - pillow
-  - gitpython
-  - packaging
-  - github-action-utils
   - nbsphinx
   - pip:
     - teqp
