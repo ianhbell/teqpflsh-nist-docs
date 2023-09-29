@@ -1,0 +1,8 @@
+name: teqpdocs_minimal
+channels:
+  - conda-forge
+dependencies:
+  - pip
+  - pip:
+    - teqp
+    - sphinxcontrib-doxylink
