@@ -16,10 +16,7 @@ jobs:
           apt-packages: texlive-font-utils
           conda-environment: minimal_environment.yml
           pre-borg-command: 
-          pre-build-command: |-
-            conda remove --all
-            conda env update --file environment.yml --solver libmamba
-            python prepare_build.py
+          pre-build-command: python prepare_build.py
           post-build-command:  cp externals/teqp/doc-BORGED/build/latex/teqp.pdf externals/teqp/doc-BORGED/build/latex/teqp-docs.pdf
           formats: |-
             epub
