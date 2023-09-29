@@ -6,10 +6,10 @@ and a conda environment is loaded
 
 import subprocess, os, sys, shutil
 here = os.path.dirname(__file__)
-print(os.environ)
+# print(os.environ)
 
 # https://stackoverflow.com/a/70129189
-subprocess.check_call("conda -y remove `conda list|awk 'NR>3 {print $1}'|tr '\n' ' '`", shell=True)
+subprocess.check_call("conda remove -y `conda list|awk 'NR>3 {print $1}'|tr '\n' ' '`", shell=True)
 subprocess.check_call('conda env update --name base --file environment.yml --solver libmamba', shell=True)
 subprocess.check_call('conda list', shell=True)
 
