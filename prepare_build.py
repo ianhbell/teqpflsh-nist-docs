@@ -8,7 +8,9 @@ import subprocess, os, sys, shutil
 here = os.path.dirname(__file__)
 
 # pip install teqp
-# subprocess.check_call(['conda', 'install', 'sphinx==7.2.6'], shell=True)
+
+subprocess.check_call('conda remove --all', shell=True)
+subprocess.check_call('conda env update --file environment.yml --solver libmamba', shell=True)
 
 # or build from source ???
 print('Finished prepare_build.py')
