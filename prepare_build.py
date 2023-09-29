@@ -11,7 +11,7 @@ here = os.path.dirname(__file__)
 # https://stackoverflow.com/a/70129189
 subprocess.check_call("pip uninstall -y teqp sphinxcontrib-doxylink", shell=True)
 # subprocess.check_call("conda remove -y `conda list|awk 'NR>3 {print $1}'|tr '\n' ' '`", shell=True)
-subprocess.check_call("conda uninstall python", shell=True)
+subprocess.check_call("conda install python=3.10", shell=True)
 print('Removing complete')
 subprocess.check_call('conda env update --name base --file environment.yml --solver libmamba', shell=True)
 print('Env updating complete')
