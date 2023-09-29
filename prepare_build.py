@@ -7,7 +7,8 @@ and a conda environment is loaded
 import subprocess, os, sys, shutil
 here = os.path.dirname(__file__)
 
-subprocess.check_call('conda remove --all', shell=True)
+# https://stackoverflow.com/a/70129189
+subprocess.check_call("conda list|awk 'NR>3 {print $1}'|tr '\n' ' '", shell=True)
 subprocess.check_call('conda env update --file environment.yml --solver libmamba', shell=True)
 
 # or build from source ???
