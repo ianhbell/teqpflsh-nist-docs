@@ -3,6 +3,9 @@ channels:
   - conda-forge
 dependencies:
   - pip
+  - nbsphinx
+  - jupyter
+  - nbconvert
   - pip:
     - teqp
     - sphinxcontrib-doxylink
