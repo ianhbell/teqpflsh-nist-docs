@@ -18,10 +18,10 @@ jobs:
           pre-borg-command: python prepare_build.py
           pre-build-command: rm -rf externals/teqp/doc-BORGED/build
           # post-borg-command: rm -rf externals/teqp/doc-BORGED/build
-          post-build-command: |-
-            cp externals/teqp/doc-BORGED/build/latex/teqp.pdf externals/teqp/doc-BORGED/build/latex/teqp-docs.pdf
-            cp externals/teqp/doc-BORGED/build/latex/teqp.tex externals/teqp/doc-BORGED/build/latex/teqp-docs.tex
-            cp externals/teqp/doc-BORGED/build/latex/teqp.log externals/teqp/doc-BORGED/build/latex/teqp-docs.log
+          # post-build-command: |-
+          #   cp externals/teqp/doc-BORGED/build/latex/teqp.pdf externals/teqp/doc-BORGED/build/latex/teqp-docs.pdf
+          #   cp externals/teqp/doc-BORGED/build/latex/teqp.tex externals/teqp/doc-BORGED/build/latex/teqp-docs.tex
+          #   cp externals/teqp/doc-BORGED/build/latex/teqp.log externals/teqp/doc-BORGED/build/latex/teqp-docs.log
           formats: |-
             epub
             pdf
