@@ -17,7 +17,7 @@ jobs:
           conda-environment: environment.yml
           pre-borg-command: python prepare_build.py
           pre-build-command: rm -rf externals/teqp/doc-BORGED/build
-          post-borg-command: echo "hi"
+          # post-borg-command: echo "hi"
           # post-build-command: |-
           #   cp externals/teqp/doc-BORGED/build/latex/teqp.pdf externals/teqp/doc-BORGED/build/latex/teqp-docs.pdf
           #   cp externals/teqp/doc-BORGED/build/latex/teqp.tex externals/teqp/doc-BORGED/build/latex/teqp-docs.tex
