@@ -25,6 +25,7 @@ here = os.path.dirname(__file__)
 # And now run doxygen and execute jupyter notebooks
 os.chdir('externals/teqp/doc/source')
 sys.path.append(os.path.abspath(os.curdir))
+os.environ['PYDEVD_DISABLE_FILE_VALIDATION'] = '1'
 import sphinx_pre_run
 sphinx_pre_run.run()
 
