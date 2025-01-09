@@ -1,0 +1,816 @@
+teqpflsh Package
+================
+
+.. autoclass:: teqpflsh._teqpflsh_impl.AbstractScaler
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`AbstractScaler`
+
+.. autoclass:: teqpflsh._teqpflsh_impl.ChebyshevApproximation1D
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`ChebyshevApproximation1D`
+
+    .. automethod:: count_x_for_y_many
+
+
+    .. automethod:: eval
+
+
+    .. automethod:: eval_many
+
+
+    .. autoproperty:: expansions
+
+
+    .. automethod:: get_intervals_containing_y
+
+
+    .. automethod:: get_x_for_y
+
+
+    .. autoproperty:: monotonic_intervals
+
+
+    .. autoproperty:: x_at_extrema
+
+
+    .. autoproperty:: xmax
+
+
+    .. autoproperty:: xmin
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.ChebyshevExpansion
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`ChebyshevExpansion`
+
+    .. autoproperty:: coeff
+
+
+    .. automethod:: eval
+
+
+    .. automethod:: eval_Eigen
+
+
+    .. automethod:: eval_many
+
+
+    .. automethod:: solve_for_x
+
+
+    .. automethod:: solve_for_x_count
+
+
+    .. automethod:: solve_for_x_many
+
+
+    .. autoproperty:: xmax
+
+
+    .. autoproperty:: xmin
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.CoordinateSequence
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`CoordinateSequence`
+
+    .. automethod:: add
+
+
+    .. automethod:: closeRing
+
+
+    .. automethod:: getSize
+
+
+    .. automethod:: getX
+
+
+    .. automethod:: getY
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.Envelope
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`Envelope`
+
+    .. autoproperty:: x_max
+
+
+    .. autoproperty:: x_min
+
+
+    .. autoproperty:: y_max
+
+
+    .. autoproperty:: y_min
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.FlashPhase
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`FlashPhase`
+
+    .. autoproperty:: mole_fractions
+
+
+    .. autoproperty:: qmolar
+
+
+    .. autoproperty:: rho_molm3
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.FlashSolution
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`FlashSolution`
+
+    .. autoproperty:: Nphases
+
+
+    .. autoproperty:: T_K
+
+
+    .. autoproperty:: phases
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.Geometry
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`Geometry`
+
+    .. automethod:: DelaunayTriangulate
+
+
+    .. automethod:: containsPoint
+
+
+    .. automethod:: difference
+
+
+    .. automethod:: fastTriangulate
+
+
+    .. automethod:: getCentroid
+
+
+    .. automethod:: getCoordinates
+
+
+    .. automethod:: getGeometryN
+
+
+    .. automethod:: getNumGeometries
+
+
+    .. automethod:: getNumPoints
+
+
+    .. automethod:: getXY
+
+
+    .. automethod:: get_PreparedGeometry
+
+
+    .. automethod:: intersection
+
+
+    .. autoproperty:: isSimple
+
+
+    .. autoproperty:: isValid
+
+
+    .. automethod:: make_valid
+
+
+    .. automethod:: run_DouglasPeuckerSimplifier
+
+
+    .. automethod:: run_TopologyPreservingSimplifier
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.GeometryFactory
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`GeometryFactory`
+
+    .. automethod:: createPolygon
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.GeometryFactoryHolder
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`GeometryFactoryHolder`
+
+    .. automethod:: createPoint
+
+
+    .. automethod:: createPolygon
+
+
+    .. automethod:: makeclosedpolygon
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.HelmholtzInterface
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`HelmholtzInterface`
+
+.. autoclass:: teqpflsh._teqpflsh_impl.IntervalMatch
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`IntervalMatch`
+
+    .. autoproperty:: expansioninfo
+
+
+    .. autoproperty:: xmax
+
+
+    .. autoproperty:: xmin
+
+
+    .. autoproperty:: ymax
+
+
+    .. autoproperty:: ymin
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.L2Tree
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`L2Tree`
+
+    .. automethod:: get_nearest_indexd2
+
+
+    .. automethod:: get_nearest_indexd2_many
+
+
+    .. automethod:: get_used_bytes
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.L2TreeHolder
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`L2TreeHolder`
+
+    .. autoproperty:: tree
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.LeafContents
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`LeafContents`
+
+    .. autoproperty:: status
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.MainFlasher
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`MainFlasher`
+
+    .. automethod:: flash
+
+
+    .. automethod:: flash_many
+
+
+    .. autoproperty:: regioned_flasher
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.MaxAbsErrorCondition
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`MaxAbsErrorCondition`
+
+.. autoclass:: teqpflsh._teqpflsh_impl.MinMaxLogScaler
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`MinMaxLogScaler`
+
+.. autoclass:: teqpflsh._teqpflsh_impl.MinMaxScaler
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`MinMaxScaler`
+
+.. autoclass:: teqpflsh._teqpflsh_impl.MonotonicExpansionMatch
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`MonotonicExpansionMatch`
+
+    .. autoproperty:: idx
+
+
+    .. autoproperty:: xmax
+
+
+    .. autoproperty:: xmin
+
+
+    .. autoproperty:: ymax
+
+
+    .. autoproperty:: ymin
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.NRIterator
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`NRIterator`
+
+    .. automethod:: calc_J
+
+
+    .. automethod:: calc_just_step
+
+
+    .. automethod:: calc_maxabsr
+
+
+    .. automethod:: calc_r
+
+
+    .. automethod:: calc_step
+
+
+    .. automethod:: calc_vals
+
+
+    .. automethod:: get_T
+
+
+    .. automethod:: get_maxabsr
+
+
+    .. automethod:: get_nonconstant_indices
+
+
+    .. automethod:: get_rho
+
+
+    .. automethod:: get_step_count
+
+
+    .. automethod:: get_vals
+
+
+    .. automethod:: path_integration
+
+
+    .. automethod:: reset
+
+
+    .. automethod:: take_steps
+
+
+    .. autoproperty:: verbose
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.NanXDXErrorCondition
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`NanXDXErrorCondition`
+
+.. autoclass:: teqpflsh._teqpflsh_impl.PQTStatus
+    :undoc-members:
+    :members:
+    :show-inheritance:
+
+    :teqpflsh:`PQTStatus`
+
+.. autoclass:: teqpflsh._teqpflsh_impl.Point
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`Point`
+
+    .. automethod:: DelaunayTriangulate
+
+
+    .. automethod:: containsPoint
+
+
+    .. automethod:: difference
+
+
+    .. automethod:: fastTriangulate
+
+
+    .. automethod:: getCentroid
+
+
+    .. automethod:: getCoordinates
+
+
+    .. automethod:: getGeometryN
+
+
+    .. automethod:: getNumGeometries
+
+
+    .. automethod:: getNumPoints
+
+
+    .. automethod:: getX
+
+
+    .. automethod:: getXY
+
+
+    .. automethod:: getY
+
+
+    .. automethod:: get_PreparedGeometry
+
+
+    .. automethod:: intersection
+
+
+    .. autoproperty:: isSimple
+
+
+    .. autoproperty:: isValid
+
+
+    .. automethod:: make_valid
+
+
+    .. automethod:: run_DouglasPeuckerSimplifier
+
+
+    .. automethod:: run_TopologyPreservingSimplifier
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.PolyQuadNode
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`PolyQuadNode`
+
+    .. autoproperty:: NE
+
+
+    .. autoproperty:: NW
+
+
+    .. autoproperty:: SE
+
+
+    .. autoproperty:: SW
+
+
+    .. automethod:: getNode
+
+
+    .. automethod:: get_contents
+
+
+    .. autoproperty:: terminal
+
+
+    .. automethod:: xmax
+
+
+    .. automethod:: xmin
+
+
+    .. automethod:: ymax
+
+
+    .. automethod:: ymin
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.PolyQuadTree
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`PolyQuadTree`
+
+    .. automethod:: area_stats
+
+
+    .. automethod:: do_splits
+
+
+    .. automethod:: get_leaves
+
+
+    .. automethod:: get_polygon_xy
+
+
+    .. automethod:: get_status
+
+
+    .. automethod:: is_complete
+
+
+    .. automethod:: is_intersection
+
+
+    .. autoproperty:: tree
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.PreparedGeometry
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`PreparedGeometry`
+
+    .. automethod:: contains
+
+
+    .. automethod:: nearestPoints
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.PropertyPairs
+    :undoc-members:
+    :members:
+    :show-inheritance:
+
+    :teqpflsh:`PropertyPairs`
+
+.. autoclass:: teqpflsh._teqpflsh_impl.PropertySet
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`PropertySet`
+
+    .. autoproperty:: T
+
+
+    .. automethod:: get_array
+
+
+    .. automethod:: get_arrays
+
+
+    .. autoproperty:: h
+
+
+    .. autoproperty:: p
+
+
+    .. autoproperty:: rho
+
+
+    .. autoproperty:: s
+
+
+    .. autoproperty:: u
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.QuadRegion2D
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`QuadRegion2D`
+
+    .. autoproperty:: bounding_polygon
+
+
+    .. automethod:: do_Delaunay_triangulation
+
+
+    .. automethod:: do_fast_triangulation
+
+
+    .. automethod:: do_splits
+
+
+    .. automethod:: get_coords_xy
+
+
+    .. automethod:: get_envelope
+
+
+    .. automethod:: get_nonsimple_xy
+
+
+    .. automethod:: get_quadtree_ro
+
+
+    .. automethod:: get_quadtree_rw
+
+
+    .. automethod:: sample_gridded
+
+
+    .. automethod:: sample_gridded_w_tree
+
+
+    .. automethod:: sample_random
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.RegionedFlashReturn
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`RegionedFlashReturn`
+
+    .. autoproperty:: T
+
+
+    .. autoproperty:: candidate_duration_us
+
+
+    .. autoproperty:: maxabsr
+
+
+    .. autoproperty:: msg
+
+
+    .. autoproperty:: newton_duration_us
+
+
+    .. autoproperty:: reason
+
+
+    .. autoproperty:: rho
+
+
+    .. autoproperty:: step_count
+
+
+    .. autoproperty:: total_duration_us
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.RegionedFlasher
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`RegionedFlasher`
+
+    .. automethod:: add_region
+
+
+    .. automethod:: flash
+
+
+    .. automethod:: flash_many
+
+
+    .. automethod:: get_NRIterator
+
+
+    .. automethod:: get_quadtree_intersections
+
+
+    .. automethod:: get_regions_ro
+
+
+    .. automethod:: get_regions_rw
+
+
+    .. automethod:: get_starting_Trho
+
+
+    .. automethod:: remove_all_regions
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.StoppingCondition
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`StoppingCondition`
+
+.. autoclass:: teqpflsh._teqpflsh_impl.StoppingConditionReason
+    :undoc-members:
+    :members:
+    :show-inheritance:
+
+    :teqpflsh:`StoppingConditionReason`
+
+.. autoclass:: teqpflsh._teqpflsh_impl.SuperAncillary
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`SuperAncillary`
+
+    .. automethod:: add_variable
+
+
+    .. automethod:: eval_sat
+
+
+    .. automethod:: eval_sat_many
+
+
+    .. automethod:: flash
+
+
+    .. automethod:: flash_many
+
+
+    .. automethod:: get_T_from_p
+
+
+    .. automethod:: get_approx1d
+
+
+    .. automethod:: get_vaporquality
+
+
+    .. automethod:: get_yval
+
+
+    .. automethod:: get_yval_many
+
+
+    .. autoproperty:: invlnp
+
+
+    .. automethod:: solve_for_T
+
+
+    .. automethod:: solve_for_Tq_DX
+
+
+    .. automethod:: solve_for_Tq_DX_many
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.SuperAncillaryTwoPhaseSolution
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`SuperAncillaryTwoPhaseSolution`
+
+    .. autoproperty:: T
+
+
+    .. autoproperty:: counter
+
+
+    .. autoproperty:: q
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.ThermodynamicRegion
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`ThermodynamicRegion`
+
+    .. automethod:: add_pair
+
+
+    .. automethod:: get_kdtree
+
+
+    .. automethod:: get_starting_Trho_many
+
+
+    .. automethod:: get_transformed_region
+
+
+    .. automethod:: has_pair
+
+
+    .. autoproperty:: propset_Trhogrid
+
+
+    .. autoproperty:: propset_bounding
+
+
+    .. autoproperty:: transformed_regions
+
+
+.. autoclass:: teqpflsh._teqpflsh_impl.TrhoLookup
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`TrhoLookup`
+
+    .. autoproperty:: T
+
+
+    .. autoproperty:: d2
+
+
+    .. autoproperty:: rho
+
+
+.. autofunction:: teqpflsh._teqpflsh_impl.add
+
+    :teqpflsh:`add`
+
+.. autofunction:: teqpflsh._teqpflsh_impl.get_pair_from_chars
+
+    :teqpflsh:`get_pair_from_chars`
+
+.. autofunction:: teqpflsh._teqpflsh_impl.get_pair_log_scaling
+
+    :teqpflsh:`get_pair_log_scaling`
+
+.. autofunction:: teqpflsh._teqpflsh_impl.get_property_chars
+
+    :teqpflsh:`get_property_chars`
+
+.. autofunction:: teqpflsh._teqpflsh_impl.indexer
+
+    :teqpflsh:`indexer`
+
+.. autofunction:: teqpflsh._teqpflsh_impl.indexer33
+
+    :teqpflsh:`indexer33`
+
+.. autoclass:: teqpflsh._teqpflsh_impl.teqpHelmholtzInterface
+    :show-inheritance:
+
+    C++ docs: :teqpflsh:`teqpHelmholtzInterface`
+
+.. autofunction:: teqpflsh._teqpflsh_impl.toms748_solve
+
+    :teqpflsh:`toms748_solve`

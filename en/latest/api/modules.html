@@ -1,0 +1,655 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="teqpflsh Package" href="teqpflsh.html" /><link rel="prev" title="Outlook" href="../background/Outlook.html" />
+
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+        <title>teqpflsh - teqpflsh 0.0.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=d4d0e21c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">teqpflsh 0.0.3 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">teqpflsh 0.0.3 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background/Background.html">Background</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../superancillary/index.html">SuperAncillary</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of SuperAncillary</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../superancillary/SuperancillaryWater.html">Superancillary functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../superancillary/SuperancillaryIterations.html">Superancillary iterations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../polygons/index.html">Polygons and Regions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Polygons and Regions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../polygons/polygonoperations.html">Polygon operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../polygons/polygonvalidity.html">Polygon validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../KDtree/index.html">K-D tree lookup</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of K-D tree lookup</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../KDtree/KDtreefundamentals.html">K-D tree fundamentals</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../regionedflasher/RegionedFlasher.html">Regioned Flasher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regionedflasher/MainFlasher.html">Complete Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Outlook.html">Outlook</a></li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">teqpflsh</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of teqpflsh</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html">teqpflsh Package</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/api/modules.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="teqpflsh">
+<h1>teqpflsh<a class="headerlink" href="#teqpflsh" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="teqpflsh.html">teqpflsh Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.AbstractScaler"><code class="docutils literal notranslate"><span class="pre">AbstractScaler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevApproximation1D"><code class="docutils literal notranslate"><span class="pre">ChebyshevApproximation1D</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevApproximation1D.count_x_for_y_many"><code class="docutils literal notranslate"><span class="pre">ChebyshevApproximation1D.count_x_for_y_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevApproximation1D.eval"><code class="docutils literal notranslate"><span class="pre">ChebyshevApproximation1D.eval()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevApproximation1D.eval_many"><code class="docutils literal notranslate"><span class="pre">ChebyshevApproximation1D.eval_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevApproximation1D.expansions"><code class="docutils literal notranslate"><span class="pre">ChebyshevApproximation1D.expansions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevApproximation1D.get_intervals_containing_y"><code class="docutils literal notranslate"><span class="pre">ChebyshevApproximation1D.get_intervals_containing_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevApproximation1D.get_x_for_y"><code class="docutils literal notranslate"><span class="pre">ChebyshevApproximation1D.get_x_for_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevApproximation1D.monotonic_intervals"><code class="docutils literal notranslate"><span class="pre">ChebyshevApproximation1D.monotonic_intervals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevApproximation1D.x_at_extrema"><code class="docutils literal notranslate"><span class="pre">ChebyshevApproximation1D.x_at_extrema</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevApproximation1D.xmax"><code class="docutils literal notranslate"><span class="pre">ChebyshevApproximation1D.xmax</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevApproximation1D.xmin"><code class="docutils literal notranslate"><span class="pre">ChebyshevApproximation1D.xmin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevExpansion"><code class="docutils literal notranslate"><span class="pre">ChebyshevExpansion</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevExpansion.coeff"><code class="docutils literal notranslate"><span class="pre">ChebyshevExpansion.coeff</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevExpansion.eval"><code class="docutils literal notranslate"><span class="pre">ChebyshevExpansion.eval()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevExpansion.eval_Eigen"><code class="docutils literal notranslate"><span class="pre">ChebyshevExpansion.eval_Eigen()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevExpansion.eval_many"><code class="docutils literal notranslate"><span class="pre">ChebyshevExpansion.eval_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevExpansion.solve_for_x"><code class="docutils literal notranslate"><span class="pre">ChebyshevExpansion.solve_for_x()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevExpansion.solve_for_x_count"><code class="docutils literal notranslate"><span class="pre">ChebyshevExpansion.solve_for_x_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevExpansion.solve_for_x_many"><code class="docutils literal notranslate"><span class="pre">ChebyshevExpansion.solve_for_x_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevExpansion.xmax"><code class="docutils literal notranslate"><span class="pre">ChebyshevExpansion.xmax</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ChebyshevExpansion.xmin"><code class="docutils literal notranslate"><span class="pre">ChebyshevExpansion.xmin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.CoordinateSequence"><code class="docutils literal notranslate"><span class="pre">CoordinateSequence</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.CoordinateSequence.add"><code class="docutils literal notranslate"><span class="pre">CoordinateSequence.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.CoordinateSequence.closeRing"><code class="docutils literal notranslate"><span class="pre">CoordinateSequence.closeRing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.CoordinateSequence.getSize"><code class="docutils literal notranslate"><span class="pre">CoordinateSequence.getSize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.CoordinateSequence.getX"><code class="docutils literal notranslate"><span class="pre">CoordinateSequence.getX()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.CoordinateSequence.getY"><code class="docutils literal notranslate"><span class="pre">CoordinateSequence.getY()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Envelope"><code class="docutils literal notranslate"><span class="pre">Envelope</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Envelope.x_max"><code class="docutils literal notranslate"><span class="pre">Envelope.x_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Envelope.x_min"><code class="docutils literal notranslate"><span class="pre">Envelope.x_min</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Envelope.y_max"><code class="docutils literal notranslate"><span class="pre">Envelope.y_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Envelope.y_min"><code class="docutils literal notranslate"><span class="pre">Envelope.y_min</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.FlashPhase"><code class="docutils literal notranslate"><span class="pre">FlashPhase</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.FlashPhase.mole_fractions"><code class="docutils literal notranslate"><span class="pre">FlashPhase.mole_fractions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.FlashPhase.qmolar"><code class="docutils literal notranslate"><span class="pre">FlashPhase.qmolar</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.FlashPhase.rho_molm3"><code class="docutils literal notranslate"><span class="pre">FlashPhase.rho_molm3</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.FlashSolution"><code class="docutils literal notranslate"><span class="pre">FlashSolution</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.FlashSolution.Nphases"><code class="docutils literal notranslate"><span class="pre">FlashSolution.Nphases</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.FlashSolution.T_K"><code class="docutils literal notranslate"><span class="pre">FlashSolution.T_K</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.FlashSolution.phases"><code class="docutils literal notranslate"><span class="pre">FlashSolution.phases</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry"><code class="docutils literal notranslate"><span class="pre">Geometry</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.DelaunayTriangulate"><code class="docutils literal notranslate"><span class="pre">Geometry.DelaunayTriangulate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.containsPoint"><code class="docutils literal notranslate"><span class="pre">Geometry.containsPoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.difference"><code class="docutils literal notranslate"><span class="pre">Geometry.difference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.fastTriangulate"><code class="docutils literal notranslate"><span class="pre">Geometry.fastTriangulate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.getCentroid"><code class="docutils literal notranslate"><span class="pre">Geometry.getCentroid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.getCoordinates"><code class="docutils literal notranslate"><span class="pre">Geometry.getCoordinates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.getGeometryN"><code class="docutils literal notranslate"><span class="pre">Geometry.getGeometryN()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.getNumGeometries"><code class="docutils literal notranslate"><span class="pre">Geometry.getNumGeometries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.getNumPoints"><code class="docutils literal notranslate"><span class="pre">Geometry.getNumPoints()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.getXY"><code class="docutils literal notranslate"><span class="pre">Geometry.getXY()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.get_PreparedGeometry"><code class="docutils literal notranslate"><span class="pre">Geometry.get_PreparedGeometry()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.intersection"><code class="docutils literal notranslate"><span class="pre">Geometry.intersection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.isSimple"><code class="docutils literal notranslate"><span class="pre">Geometry.isSimple</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.isValid"><code class="docutils literal notranslate"><span class="pre">Geometry.isValid</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.make_valid"><code class="docutils literal notranslate"><span class="pre">Geometry.make_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.run_DouglasPeuckerSimplifier"><code class="docutils literal notranslate"><span class="pre">Geometry.run_DouglasPeuckerSimplifier()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Geometry.run_TopologyPreservingSimplifier"><code class="docutils literal notranslate"><span class="pre">Geometry.run_TopologyPreservingSimplifier()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.GeometryFactory"><code class="docutils literal notranslate"><span class="pre">GeometryFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.GeometryFactory.createPolygon"><code class="docutils literal notranslate"><span class="pre">GeometryFactory.createPolygon()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.GeometryFactoryHolder"><code class="docutils literal notranslate"><span class="pre">GeometryFactoryHolder</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.GeometryFactoryHolder.createPoint"><code class="docutils literal notranslate"><span class="pre">GeometryFactoryHolder.createPoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.GeometryFactoryHolder.createPolygon"><code class="docutils literal notranslate"><span class="pre">GeometryFactoryHolder.createPolygon()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.GeometryFactoryHolder.makeclosedpolygon"><code class="docutils literal notranslate"><span class="pre">GeometryFactoryHolder.makeclosedpolygon()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.HelmholtzInterface"><code class="docutils literal notranslate"><span class="pre">HelmholtzInterface</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.IntervalMatch"><code class="docutils literal notranslate"><span class="pre">IntervalMatch</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.IntervalMatch.expansioninfo"><code class="docutils literal notranslate"><span class="pre">IntervalMatch.expansioninfo</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.IntervalMatch.xmax"><code class="docutils literal notranslate"><span class="pre">IntervalMatch.xmax</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.IntervalMatch.xmin"><code class="docutils literal notranslate"><span class="pre">IntervalMatch.xmin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.IntervalMatch.ymax"><code class="docutils literal notranslate"><span class="pre">IntervalMatch.ymax</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.IntervalMatch.ymin"><code class="docutils literal notranslate"><span class="pre">IntervalMatch.ymin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.L2Tree"><code class="docutils literal notranslate"><span class="pre">L2Tree</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.L2Tree.get_nearest_indexd2"><code class="docutils literal notranslate"><span class="pre">L2Tree.get_nearest_indexd2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.L2Tree.get_nearest_indexd2_many"><code class="docutils literal notranslate"><span class="pre">L2Tree.get_nearest_indexd2_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.L2Tree.get_used_bytes"><code class="docutils literal notranslate"><span class="pre">L2Tree.get_used_bytes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.L2TreeHolder"><code class="docutils literal notranslate"><span class="pre">L2TreeHolder</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.L2TreeHolder.tree"><code class="docutils literal notranslate"><span class="pre">L2TreeHolder.tree</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.LeafContents"><code class="docutils literal notranslate"><span class="pre">LeafContents</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.LeafContents.status"><code class="docutils literal notranslate"><span class="pre">LeafContents.status</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MainFlasher"><code class="docutils literal notranslate"><span class="pre">MainFlasher</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MainFlasher.flash"><code class="docutils literal notranslate"><span class="pre">MainFlasher.flash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MainFlasher.flash_many"><code class="docutils literal notranslate"><span class="pre">MainFlasher.flash_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MainFlasher.regioned_flasher"><code class="docutils literal notranslate"><span class="pre">MainFlasher.regioned_flasher</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MaxAbsErrorCondition"><code class="docutils literal notranslate"><span class="pre">MaxAbsErrorCondition</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MinMaxLogScaler"><code class="docutils literal notranslate"><span class="pre">MinMaxLogScaler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MinMaxScaler"><code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MonotonicExpansionMatch"><code class="docutils literal notranslate"><span class="pre">MonotonicExpansionMatch</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MonotonicExpansionMatch.idx"><code class="docutils literal notranslate"><span class="pre">MonotonicExpansionMatch.idx</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MonotonicExpansionMatch.xmax"><code class="docutils literal notranslate"><span class="pre">MonotonicExpansionMatch.xmax</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MonotonicExpansionMatch.xmin"><code class="docutils literal notranslate"><span class="pre">MonotonicExpansionMatch.xmin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MonotonicExpansionMatch.ymax"><code class="docutils literal notranslate"><span class="pre">MonotonicExpansionMatch.ymax</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.MonotonicExpansionMatch.ymin"><code class="docutils literal notranslate"><span class="pre">MonotonicExpansionMatch.ymin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator"><code class="docutils literal notranslate"><span class="pre">NRIterator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.calc_J"><code class="docutils literal notranslate"><span class="pre">NRIterator.calc_J()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.calc_just_step"><code class="docutils literal notranslate"><span class="pre">NRIterator.calc_just_step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.calc_maxabsr"><code class="docutils literal notranslate"><span class="pre">NRIterator.calc_maxabsr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.calc_r"><code class="docutils literal notranslate"><span class="pre">NRIterator.calc_r()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.calc_step"><code class="docutils literal notranslate"><span class="pre">NRIterator.calc_step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.calc_vals"><code class="docutils literal notranslate"><span class="pre">NRIterator.calc_vals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.get_T"><code class="docutils literal notranslate"><span class="pre">NRIterator.get_T()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.get_maxabsr"><code class="docutils literal notranslate"><span class="pre">NRIterator.get_maxabsr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.get_nonconstant_indices"><code class="docutils literal notranslate"><span class="pre">NRIterator.get_nonconstant_indices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.get_rho"><code class="docutils literal notranslate"><span class="pre">NRIterator.get_rho()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.get_step_count"><code class="docutils literal notranslate"><span class="pre">NRIterator.get_step_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.get_vals"><code class="docutils literal notranslate"><span class="pre">NRIterator.get_vals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.path_integration"><code class="docutils literal notranslate"><span class="pre">NRIterator.path_integration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.reset"><code class="docutils literal notranslate"><span class="pre">NRIterator.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.take_steps"><code class="docutils literal notranslate"><span class="pre">NRIterator.take_steps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NRIterator.verbose"><code class="docutils literal notranslate"><span class="pre">NRIterator.verbose</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.NanXDXErrorCondition"><code class="docutils literal notranslate"><span class="pre">NanXDXErrorCondition</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PQTStatus"><code class="docutils literal notranslate"><span class="pre">PQTStatus</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PQTStatus.inside"><code class="docutils literal notranslate"><span class="pre">PQTStatus.inside</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PQTStatus.intersection"><code class="docutils literal notranslate"><span class="pre">PQTStatus.intersection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PQTStatus.outside"><code class="docutils literal notranslate"><span class="pre">PQTStatus.outside</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point"><code class="docutils literal notranslate"><span class="pre">Point</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.DelaunayTriangulate"><code class="docutils literal notranslate"><span class="pre">Point.DelaunayTriangulate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.containsPoint"><code class="docutils literal notranslate"><span class="pre">Point.containsPoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.difference"><code class="docutils literal notranslate"><span class="pre">Point.difference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.fastTriangulate"><code class="docutils literal notranslate"><span class="pre">Point.fastTriangulate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.getCentroid"><code class="docutils literal notranslate"><span class="pre">Point.getCentroid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.getCoordinates"><code class="docutils literal notranslate"><span class="pre">Point.getCoordinates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.getGeometryN"><code class="docutils literal notranslate"><span class="pre">Point.getGeometryN()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.getNumGeometries"><code class="docutils literal notranslate"><span class="pre">Point.getNumGeometries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.getNumPoints"><code class="docutils literal notranslate"><span class="pre">Point.getNumPoints()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.getX"><code class="docutils literal notranslate"><span class="pre">Point.getX()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.getXY"><code class="docutils literal notranslate"><span class="pre">Point.getXY()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.getY"><code class="docutils literal notranslate"><span class="pre">Point.getY()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.get_PreparedGeometry"><code class="docutils literal notranslate"><span class="pre">Point.get_PreparedGeometry()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.intersection"><code class="docutils literal notranslate"><span class="pre">Point.intersection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.isSimple"><code class="docutils literal notranslate"><span class="pre">Point.isSimple</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.isValid"><code class="docutils literal notranslate"><span class="pre">Point.isValid</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.make_valid"><code class="docutils literal notranslate"><span class="pre">Point.make_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.run_DouglasPeuckerSimplifier"><code class="docutils literal notranslate"><span class="pre">Point.run_DouglasPeuckerSimplifier()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.Point.run_TopologyPreservingSimplifier"><code class="docutils literal notranslate"><span class="pre">Point.run_TopologyPreservingSimplifier()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode.NE"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode.NE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode.NW"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode.NW</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode.SE"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode.SE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode.SW"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode.SW</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode.getNode"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode.getNode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode.get_contents"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode.get_contents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode.terminal"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode.terminal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode.xmax"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode.xmax()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode.xmin"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode.xmin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode.ymax"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode.ymax()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadNode.ymin"><code class="docutils literal notranslate"><span class="pre">PolyQuadNode.ymin()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadTree"><code class="docutils literal notranslate"><span class="pre">PolyQuadTree</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadTree.area_stats"><code class="docutils literal notranslate"><span class="pre">PolyQuadTree.area_stats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadTree.do_splits"><code class="docutils literal notranslate"><span class="pre">PolyQuadTree.do_splits()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadTree.get_leaves"><code class="docutils literal notranslate"><span class="pre">PolyQuadTree.get_leaves()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadTree.get_polygon_xy"><code class="docutils literal notranslate"><span class="pre">PolyQuadTree.get_polygon_xy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadTree.get_status"><code class="docutils literal notranslate"><span class="pre">PolyQuadTree.get_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadTree.is_complete"><code class="docutils literal notranslate"><span class="pre">PolyQuadTree.is_complete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadTree.is_intersection"><code class="docutils literal notranslate"><span class="pre">PolyQuadTree.is_intersection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PolyQuadTree.tree"><code class="docutils literal notranslate"><span class="pre">PolyQuadTree.tree</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PreparedGeometry"><code class="docutils literal notranslate"><span class="pre">PreparedGeometry</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PreparedGeometry.contains"><code class="docutils literal notranslate"><span class="pre">PreparedGeometry.contains()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PreparedGeometry.nearestPoints"><code class="docutils literal notranslate"><span class="pre">PreparedGeometry.nearestPoints()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs"><code class="docutils literal notranslate"><span class="pre">PropertyPairs</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.DH"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.DH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.DP"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.DP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.DS"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.DS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.DT"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.DT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.DU"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.DU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.HP"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.HP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.HS"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.HS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.HT"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.HT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.HU"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.HU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.PS"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.PS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.PT"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.PT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.PU"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.PU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.ST"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.ST</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.SU"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.SU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertyPairs.TU"><code class="docutils literal notranslate"><span class="pre">PropertyPairs.TU</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertySet"><code class="docutils literal notranslate"><span class="pre">PropertySet</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertySet.T"><code class="docutils literal notranslate"><span class="pre">PropertySet.T</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertySet.get_array"><code class="docutils literal notranslate"><span class="pre">PropertySet.get_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertySet.get_arrays"><code class="docutils literal notranslate"><span class="pre">PropertySet.get_arrays()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertySet.h"><code class="docutils literal notranslate"><span class="pre">PropertySet.h</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertySet.p"><code class="docutils literal notranslate"><span class="pre">PropertySet.p</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertySet.rho"><code class="docutils literal notranslate"><span class="pre">PropertySet.rho</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertySet.s"><code class="docutils literal notranslate"><span class="pre">PropertySet.s</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.PropertySet.u"><code class="docutils literal notranslate"><span class="pre">PropertySet.u</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.bounding_polygon"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.bounding_polygon</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.do_Delaunay_triangulation"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.do_Delaunay_triangulation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.do_fast_triangulation"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.do_fast_triangulation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.do_splits"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.do_splits()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.get_coords_xy"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.get_coords_xy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.get_envelope"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.get_envelope()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.get_nonsimple_xy"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.get_nonsimple_xy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.get_quadtree_ro"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.get_quadtree_ro()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.get_quadtree_rw"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.get_quadtree_rw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.sample_gridded"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.sample_gridded()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.sample_gridded_w_tree"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.sample_gridded_w_tree()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.QuadRegion2D.sample_random"><code class="docutils literal notranslate"><span class="pre">QuadRegion2D.sample_random()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlashReturn"><code class="docutils literal notranslate"><span class="pre">RegionedFlashReturn</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlashReturn.T"><code class="docutils literal notranslate"><span class="pre">RegionedFlashReturn.T</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlashReturn.candidate_duration_us"><code class="docutils literal notranslate"><span class="pre">RegionedFlashReturn.candidate_duration_us</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlashReturn.maxabsr"><code class="docutils literal notranslate"><span class="pre">RegionedFlashReturn.maxabsr</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlashReturn.msg"><code class="docutils literal notranslate"><span class="pre">RegionedFlashReturn.msg</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlashReturn.newton_duration_us"><code class="docutils literal notranslate"><span class="pre">RegionedFlashReturn.newton_duration_us</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlashReturn.reason"><code class="docutils literal notranslate"><span class="pre">RegionedFlashReturn.reason</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlashReturn.rho"><code class="docutils literal notranslate"><span class="pre">RegionedFlashReturn.rho</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlashReturn.step_count"><code class="docutils literal notranslate"><span class="pre">RegionedFlashReturn.step_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlashReturn.total_duration_us"><code class="docutils literal notranslate"><span class="pre">RegionedFlashReturn.total_duration_us</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlasher"><code class="docutils literal notranslate"><span class="pre">RegionedFlasher</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlasher.add_region"><code class="docutils literal notranslate"><span class="pre">RegionedFlasher.add_region()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlasher.flash"><code class="docutils literal notranslate"><span class="pre">RegionedFlasher.flash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlasher.flash_many"><code class="docutils literal notranslate"><span class="pre">RegionedFlasher.flash_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlasher.get_NRIterator"><code class="docutils literal notranslate"><span class="pre">RegionedFlasher.get_NRIterator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlasher.get_quadtree_intersections"><code class="docutils literal notranslate"><span class="pre">RegionedFlasher.get_quadtree_intersections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlasher.get_regions_ro"><code class="docutils literal notranslate"><span class="pre">RegionedFlasher.get_regions_ro()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlasher.get_regions_rw"><code class="docutils literal notranslate"><span class="pre">RegionedFlasher.get_regions_rw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlasher.get_starting_Trho"><code class="docutils literal notranslate"><span class="pre">RegionedFlasher.get_starting_Trho()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.RegionedFlasher.remove_all_regions"><code class="docutils literal notranslate"><span class="pre">RegionedFlasher.remove_all_regions()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.StoppingCondition"><code class="docutils literal notranslate"><span class="pre">StoppingCondition</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.StoppingConditionReason"><code class="docutils literal notranslate"><span class="pre">StoppingConditionReason</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.StoppingConditionReason.fatal"><code class="docutils literal notranslate"><span class="pre">StoppingConditionReason.fatal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.StoppingConditionReason.keep_going"><code class="docutils literal notranslate"><span class="pre">StoppingConditionReason.keep_going</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.StoppingConditionReason.success"><code class="docutils literal notranslate"><span class="pre">StoppingConditionReason.success</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary"><code class="docutils literal notranslate"><span class="pre">SuperAncillary</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.add_variable"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.add_variable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.eval_sat"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.eval_sat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.eval_sat_many"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.eval_sat_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.flash"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.flash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.flash_many"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.flash_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.get_T_from_p"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.get_T_from_p()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.get_approx1d"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.get_approx1d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.get_vaporquality"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.get_vaporquality()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.get_yval"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.get_yval()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.get_yval_many"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.get_yval_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.invlnp"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.invlnp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.solve_for_T"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.solve_for_T()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.solve_for_Tq_DX"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.solve_for_Tq_DX()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillary.solve_for_Tq_DX_many"><code class="docutils literal notranslate"><span class="pre">SuperAncillary.solve_for_Tq_DX_many()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillaryTwoPhaseSolution"><code class="docutils literal notranslate"><span class="pre">SuperAncillaryTwoPhaseSolution</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillaryTwoPhaseSolution.T"><code class="docutils literal notranslate"><span class="pre">SuperAncillaryTwoPhaseSolution.T</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillaryTwoPhaseSolution.counter"><code class="docutils literal notranslate"><span class="pre">SuperAncillaryTwoPhaseSolution.counter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.SuperAncillaryTwoPhaseSolution.q"><code class="docutils literal notranslate"><span class="pre">SuperAncillaryTwoPhaseSolution.q</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ThermodynamicRegion"><code class="docutils literal notranslate"><span class="pre">ThermodynamicRegion</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ThermodynamicRegion.add_pair"><code class="docutils literal notranslate"><span class="pre">ThermodynamicRegion.add_pair()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ThermodynamicRegion.get_kdtree"><code class="docutils literal notranslate"><span class="pre">ThermodynamicRegion.get_kdtree()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ThermodynamicRegion.get_starting_Trho_many"><code class="docutils literal notranslate"><span class="pre">ThermodynamicRegion.get_starting_Trho_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ThermodynamicRegion.get_transformed_region"><code class="docutils literal notranslate"><span class="pre">ThermodynamicRegion.get_transformed_region()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ThermodynamicRegion.has_pair"><code class="docutils literal notranslate"><span class="pre">ThermodynamicRegion.has_pair()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ThermodynamicRegion.propset_Trhogrid"><code class="docutils literal notranslate"><span class="pre">ThermodynamicRegion.propset_Trhogrid</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ThermodynamicRegion.propset_bounding"><code class="docutils literal notranslate"><span class="pre">ThermodynamicRegion.propset_bounding</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.ThermodynamicRegion.transformed_regions"><code class="docutils literal notranslate"><span class="pre">ThermodynamicRegion.transformed_regions</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.TrhoLookup"><code class="docutils literal notranslate"><span class="pre">TrhoLookup</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.TrhoLookup.T"><code class="docutils literal notranslate"><span class="pre">TrhoLookup.T</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.TrhoLookup.d2"><code class="docutils literal notranslate"><span class="pre">TrhoLookup.d2</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.TrhoLookup.rho"><code class="docutils literal notranslate"><span class="pre">TrhoLookup.rho</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.get_pair_from_chars"><code class="docutils literal notranslate"><span class="pre">get_pair_from_chars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.get_pair_log_scaling"><code class="docutils literal notranslate"><span class="pre">get_pair_log_scaling()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.get_property_chars"><code class="docutils literal notranslate"><span class="pre">get_property_chars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.indexer"><code class="docutils literal notranslate"><span class="pre">indexer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.indexer33"><code class="docutils literal notranslate"><span class="pre">indexer33()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.teqpHelmholtzInterface"><code class="docutils literal notranslate"><span class="pre">teqpHelmholtzInterface</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teqpflsh.html#teqpflsh._teqpflsh_impl.toms748_solve"><code class="docutils literal notranslate"><span class="pre">toms748_solve()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="teqpflsh.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">teqpflsh Package</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../background/Outlook.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Outlook</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Ian Bell
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=65a4545c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>
