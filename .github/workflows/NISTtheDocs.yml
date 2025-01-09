@@ -23,5 +23,5 @@ jobs:
           #   cp externals/teqp/doc-BORGED/build/latex/teqp.tex externals/teqp/doc-BORGED/build/latex/teqp-docs.tex
           #   cp externals/teqp/doc-BORGED/build/latex/teqp.log externals/teqp/doc-BORGED/build/latex/teqp-docs.log
           formats: |-
-            epub
+            html
             pdf
