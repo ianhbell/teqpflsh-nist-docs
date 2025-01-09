@@ -12,7 +12,7 @@ jobs:
         run: git submodule update --init --recursive
       - uses: ianhbell/Docs4NIST@main
         with:
-          docs-folder: externals/teqp/doc/
+          docs-folder: externals/teqpflsh/doc/
           apt-packages: texlive-font-utils
           conda-environment: environment.yml
           pre-borg-command: python prepare_build.py

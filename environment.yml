@@ -15,6 +15,7 @@ dependencies:
     - scipy
     - matplotlib
     - teqp
+    - teqpflsh
     - PCSAFTsuperanc
     - sphinxcontrib-doxylink
     - CoolProp
