@@ -1,0 +1,575 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Complete Example" href="MainFlasher.html" /><link rel="prev" title="K-D tree fundamentals" href="../KDtree/KDtreefundamentals.html" />
+
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+        <title>Regioned Flasher - teqpflsh 0.0.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=d4d0e21c" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">teqpflsh 0.0.3 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">teqpflsh 0.0.3 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background/Background.html">Background</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../superancillary/index.html">SuperAncillary</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of SuperAncillary</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../superancillary/SuperancillaryWater.html">Superancillary functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../superancillary/SuperancillaryIterations.html">Superancillary iterations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../polygons/index.html">Polygons and Regions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Polygons and Regions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../polygons/polygonoperations.html">Polygon operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../polygons/polygonvalidity.html">Polygon validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../KDtree/index.html">K-D tree lookup</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of K-D tree lookup</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../KDtree/KDtreefundamentals.html">K-D tree fundamentals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Regioned Flasher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MainFlasher.html">Complete Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Outlook.html">Outlook</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/modules.html">teqpflsh</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of teqpflsh</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/teqpflsh.html">teqpflsh Package</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/regionedflasher/RegionedFlasher.ipynb.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="Regioned-Flasher">
+<h1>Regioned Flasher<a class="headerlink" href="#Regioned-Flasher" title="Permalink to this heading">¶</a></h1>
+<p>The regioned flasher breaks up the temperature-density plane into multiple region. In each region, a K-D tree is constructed for points distributed within the region in T-D coordinates (because they are the coordinates of the EOS and require no iteration to obtain them). Thus distributing the points cannot fail (like iterative calculations in P-H coordinates might). To start, lets begin with a rectangular region in the supercritical region as a demonstration. The real regions are much more
+complex as they need to handle the complete fluid domain, deal with solid-liquid phase equilibria, etc..</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span><span class="o">,</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">teqpflsh</span><span class="o">,</span> <span class="nn">teqp</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;n-Propane&quot;</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">teqp</span><span class="o">.</span><span class="n">get_datapath</span><span class="p">()</span><span class="si">}</span><span class="s1">/dev/fluids/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">.json&#39;</span>
+<span class="n">jresid</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;multifluid&quot;</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;components&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="s2">&quot;root&quot;</span><span class="p">:</span> <span class="n">teqp</span><span class="o">.</span><span class="n">get_datapath</span><span class="p">()}}</span>
+<span class="n">jidealgas</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;IdealHelmholtz&quot;</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">teqp</span><span class="o">.</span><span class="n">convert_CoolProp_idealgas</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]}</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="n">teqpflsh</span><span class="o">.</span><span class="n">RegionedFlasher</span><span class="p">(</span>
+    <span class="n">ideal_gas</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">jidealgas</span><span class="p">),</span>
+    <span class="n">resid</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">jresid</span><span class="p">),</span>
+    <span class="n">mole_fractions</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="c1"># To start off there are no regions in the regioned flasher</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# of regions:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">get_regions_rw</span><span class="p">()))</span>
+
+<span class="c1"># Now we make a region with rectangular shape in T, rho coordinates</span>
+<span class="c1"># As we will see, a rectangular shape with only the corners defined doesn&#39;t work so well when transformed into</span>
+<span class="c1"># other coordinates</span>
+<span class="n">Tmin</span> <span class="o">=</span> <span class="mi">400</span> <span class="c1"># K</span>
+<span class="n">Tmax</span> <span class="o">=</span> <span class="mi">450</span> <span class="c1"># K</span>
+<span class="n">rhomin</span> <span class="o">=</span> <span class="mf">1e-6</span> <span class="c1"># mol/m³</span>
+<span class="n">rhomax</span> <span class="o">=</span> <span class="mi">6000</span> <span class="c1"># mol/m³</span>
+<span class="n">Tpoly</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Tmin</span><span class="p">,</span> <span class="n">Tmin</span><span class="p">,</span> <span class="n">Tmax</span><span class="p">,</span> <span class="n">Tmax</span><span class="p">,</span> <span class="n">Tmin</span><span class="p">])</span>
+<span class="n">rhopoly</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">rhomin</span><span class="p">,</span> <span class="n">rhomax</span><span class="p">,</span> <span class="n">rhomax</span><span class="p">,</span> <span class="n">rhomin</span><span class="p">,</span> <span class="n">rhomin</span><span class="p">])</span>
+<span class="n">NT</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">Nrho</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">rf</span><span class="o">.</span><span class="n">add_region</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">Tpoly</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="n">rhopoly</span><span class="p">,</span> <span class="n">NT</span><span class="o">=</span><span class="n">NT</span><span class="p">,</span> <span class="n">Nrho</span><span class="o">=</span><span class="n">Nrho</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# of regions:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">get_regions_ro</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+# of regions: 0
+# of regions: 1
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here is the bounding region and the points used for construction of the K-D tree</span>
+<span class="c1"># This all looks nice</span>
+<span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">rf</span><span class="o">.</span><span class="n">get_regions_rw</span><span class="p">():</span>
+    <span class="n">reg</span><span class="o">.</span><span class="n">add_pair</span><span class="p">(</span><span class="n">proppair</span><span class="o">=</span><span class="n">teqpflsh</span><span class="o">.</span><span class="n">PropertyPairs</span><span class="o">.</span><span class="n">DT</span><span class="p">,</span> <span class="n">Nsplit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">pset</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">propset_bounding</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pset</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="n">pset</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">)</span>
+
+    <span class="n">pset</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">propset_Trhogrid</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pset</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="n">pset</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\rho$ / mol/m$^3$&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;$T$ / K&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/regionedflasher_RegionedFlasher_3_0.png" src="../_images/regionedflasher_RegionedFlasher_3_0.png" />
+</div>
+</div>
+<p>But when you shift to another variable pair, here density and entropy, the rectangular box and its sampled (in <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(\rho\)</span>) points do not all map together</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">rf</span><span class="o">.</span><span class="n">get_regions_rw</span><span class="p">():</span>
+    <span class="n">reg</span><span class="o">.</span><span class="n">add_pair</span><span class="p">(</span><span class="n">proppair</span><span class="o">=</span><span class="n">teqpflsh</span><span class="o">.</span><span class="n">PropertyPairs</span><span class="o">.</span><span class="n">DS</span><span class="p">,</span> <span class="n">Nsplit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">pset</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">propset_bounding</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pset</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="n">pset</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">)</span>
+
+    <span class="n">pset</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">propset_Trhogrid</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pset</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="n">pset</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\rho$ / mol/m$^3$&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;$s$ / J/mol/K&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/regionedflasher_RegionedFlasher_5_0.png" src="../_images/regionedflasher_RegionedFlasher_5_0.png" />
+</div>
+</div>
+<p>In order to get around this problem, the box needs to be sampled at more than 5 points</p>
+<p>Exercise for reader: build a more dense polygon defining the boundary of the box, with many more points along each side</p>
+<p>To better understand the timing of each step, it can be useful to profile each step independently. The <code class="docutils literal notranslate"><span class="pre">_many</span></code> methods has been written for this purpose. The overhead in nanobind with pre-allocated buffers being passed to the function is functionally zero.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">500000</span>
+
+<span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">rf</span><span class="o">.</span><span class="n">get_regions_rw</span><span class="p">():</span>
+    <span class="n">reg</span><span class="o">.</span><span class="n">add_pair</span><span class="p">(</span><span class="n">proppair</span><span class="o">=</span><span class="n">teqpflsh</span><span class="o">.</span><span class="n">PropertyPairs</span><span class="o">.</span><span class="n">DP</span><span class="p">,</span> <span class="n">Nsplit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">get_kdtree</span><span class="p">(</span><span class="n">teqpflsh</span><span class="o">.</span><span class="n">PropertyPairs</span><span class="o">.</span><span class="n">DP</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.25e7</span><span class="p">,</span> <span class="mf">0.251e7</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+    <span class="n">tic</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+    <span class="n">tree</span><span class="o">.</span><span class="n">get_nearest_indexd2_many</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
+    <span class="n">toc</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">((</span><span class="n">toc</span><span class="o">-</span><span class="n">tic</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="s1">&#39;μs to look up a point from the K-D tree&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The K-D tree consumes&#39;</span><span class="p">,</span> <span class="n">tree</span><span class="o">.</span><span class="n">get_used_bytes</span><span class="p">()</span><span class="o">/</span><span class="mi">1024</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;MiB&quot;</span><span class="p">)</span>
+
+    <span class="n">TT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">DD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">tic</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+    <span class="n">reg</span><span class="o">.</span><span class="n">get_starting_Trho_many</span><span class="p">(</span><span class="n">teqpflsh</span><span class="o">.</span><span class="n">PropertyPairs</span><span class="o">.</span><span class="n">DP</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">TT</span><span class="p">,</span> <span class="n">DD</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
+    <span class="n">toc</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">((</span><span class="n">toc</span><span class="o">-</span><span class="n">tic</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="s1">&#39;μs to look up a point from the K-D tree and return the (T, rho) point and its &#39;</span>
+          <span class="s1">&#39;distance. This should be a smidge slower than the above calculation&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.19432550005149096 μs to look up a point from the K-D tree
+The K-D tree consumes 32.41525650024414 MiB
+0.1970805840101093 μs to look up a point from the K-D tree and return the (T, rho) point and its distance. This should be a smidge slower than the above calculation
+</pre></div></div>
+</div>
+<p>Putting it all together, here is an example of using the entire flash calculation. The steps are:</p>
+<ol class="arabic simple">
+<li><p>Find the nearest point in the K-D tree to get a starting value for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(\rho\)</span> for further iteration</p></li>
+<li><p>Do the iteration to find the right <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(\rho\)</span> satisfying the problem statement (trivial in this case because <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(\rho\)</span> are input variables)</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">rf</span><span class="o">.</span><span class="n">get_regions_rw</span><span class="p">():</span>
+    <span class="n">reg</span><span class="o">.</span><span class="n">add_pair</span><span class="p">(</span><span class="n">proppair</span><span class="o">=</span><span class="n">teqpflsh</span><span class="o">.</span><span class="n">PropertyPairs</span><span class="o">.</span><span class="n">DT</span><span class="p">,</span> <span class="n">Nsplit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50000</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">251</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">TT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">DD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">maxabsr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">newtontime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">candtime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">tic</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">flash_many</span><span class="p">(</span><span class="n">teqpflsh</span><span class="o">.</span><span class="n">PropertyPairs</span><span class="o">.</span><span class="n">DT</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">TT</span><span class="p">,</span> <span class="n">DD</span><span class="p">,</span> <span class="n">steps</span><span class="p">,</span> <span class="n">maxabsr</span><span class="p">,</span> <span class="n">newtontime</span><span class="p">,</span> <span class="n">candtime</span><span class="p">)</span>
+<span class="n">toc</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">toc</span><span class="o">-</span><span class="n">tic</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">newtontime</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">candtime</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">steps</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.3062583201099187 0.9456310399999999 0.25357912 0.0
+</pre></div></div>
+</div>
+<p>The timing is carried out at a fairly granular level. The <code class="docutils literal notranslate"><span class="pre">candtime</span></code> argument is the time required (in μs) to do preparation of the candidates from the K-D tree values. The <code class="docutils literal notranslate"><span class="pre">newtontime</span></code> is the time spent (in μs) preparing the iteration object and actually doing the iteration. In this case the inputs do not require any iteration, but the newton iterator is still constructed.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we iterate for two variables, it is much slower</span>
+<span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">rf</span><span class="o">.</span><span class="n">get_regions_rw</span><span class="p">():</span>
+    <span class="n">reg</span><span class="o">.</span><span class="n">add_pair</span><span class="p">(</span><span class="n">proppair</span><span class="o">=</span><span class="n">teqpflsh</span><span class="o">.</span><span class="n">PropertyPairs</span><span class="o">.</span><span class="n">PS</span><span class="p">,</span> <span class="n">Nsplit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Take the points in the K-D tree to do calculations</span>
+<span class="c1"># They trivially satisfy the stopping conditions!</span>
+<span class="n">propset</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">propset_Trhogrid</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">propset</span><span class="o">.</span><span class="n">p</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">propset</span><span class="o">.</span><span class="n">s</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">flash</span><span class="p">(</span><span class="n">teqpflsh</span><span class="o">.</span><span class="n">PropertyPairs</span><span class="o">.</span><span class="n">PS</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">candidate_duration_us</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">total_duration_us</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">newton_duration_us</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">step_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+400.04716315487264 1.0000000000000004e-06 5.041 16.0 10.834 1
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now p, s inputs but with a bit of noise in entropy to force the</span>
+<span class="c1"># Newton iterator to actually do something</span>
+
+<span class="c1"># Input variables</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">propset</span><span class="o">.</span><span class="n">p</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">propset</span><span class="o">.</span><span class="n">s</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Output buffers</span>
+<span class="n">TT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">DD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">maxabsr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">newtontime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">candtime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">tic</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+
+<span class="n">rf</span><span class="o">.</span><span class="n">flash_many</span><span class="p">(</span><span class="n">teqpflsh</span><span class="o">.</span><span class="n">PropertyPairs</span><span class="o">.</span><span class="n">PS</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">TT</span><span class="p">,</span> <span class="n">DD</span><span class="p">,</span> <span class="n">steps</span><span class="p">,</span> <span class="n">maxabsr</span><span class="p">,</span> <span class="n">newtontime</span><span class="p">,</span> <span class="n">candtime</span><span class="p">)</span>
+<span class="n">toc</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">toc</span><span class="o">-</span><span class="n">tic</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">newtontime</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">candtime</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">steps</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">maxabsr</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">TT</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.2074755386728637 2.643995782586261 0.46512329597547125 3.0077775161447087 1.4765034340778192e-10 0
+</pre></div></div>
+</div>
+<p>Ok, that’s good. Iteration was carried out, and the deviations between the specified and iterated entropy and pressure were good. It took approximately 1.1 μs per iteration step of the Newton iterator, which isn’t too bad, but we did start not too far from the actual solution.</p>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="MainFlasher.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Complete Example</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../KDtree/KDtreefundamentals.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">K-D tree fundamentals</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Ian Bell
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=65a4545c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

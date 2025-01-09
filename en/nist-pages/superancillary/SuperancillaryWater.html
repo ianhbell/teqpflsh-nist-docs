@@ -1,0 +1,839 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Superancillary iterations" href="SuperancillaryIterations.html" /><link rel="prev" title="SuperAncillary" href="index.html" />
+
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+        <title>Superancillary functions - teqpflsh 0.0.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=d4d0e21c" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">teqpflsh 0.0.3 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">teqpflsh 0.0.3 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background/Background.html">Background</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">SuperAncillary</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of SuperAncillary</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Superancillary functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SuperancillaryIterations.html">Superancillary iterations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../polygons/index.html">Polygons and Regions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Polygons and Regions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../polygons/polygonoperations.html">Polygon operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../polygons/polygonvalidity.html">Polygon validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../KDtree/index.html">K-D tree lookup</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of K-D tree lookup</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../KDtree/KDtreefundamentals.html">K-D tree fundamentals</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../regionedflasher/RegionedFlasher.html">Regioned Flasher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regionedflasher/MainFlasher.html">Complete Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Outlook.html">Outlook</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/modules.html">teqpflsh</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of teqpflsh</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/teqpflsh.html">teqpflsh Package</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/superancillary/SuperancillaryWater.ipynb.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="Superancillary-functions">
+<h1>Superancillary functions<a class="headerlink" href="#Superancillary-functions" title="Permalink to this heading">¶</a></h1>
+<p>TODO: object hierarchy</p>
+<p>TODO: rough description of algorithms</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">timeit</span>
+<span class="kn">import</span> <span class="nn">tarfile</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">ChebTools</span>
+<span class="kn">import</span> <span class="nn">teqpflsh</span>
+<span class="kn">import</span> <span class="nn">CoolProp.CoolProp</span> <span class="k">as</span> <span class="nn">CP</span>
+</pre></div>
+</div>
+</div>
+<p>Build a superancillary function for water</p>
+<p>To begin, load from the provided files:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\rho'(T)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho''(T)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(T)\)</span></p></li>
+</ul>
+<p>And then use the EOS (as implemented in CoolProp, but REFPROP would be fine too) to add</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h'(T)\)</span>, <span class="math notranslate nohighlight">\(h''(T)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(s'(T)\)</span>, <span class="math notranslate nohighlight">\(s''(T)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(u'(T)\)</span>, <span class="math notranslate nohighlight">\(u''(T)\)</span></p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FLD</span> <span class="o">=</span> <span class="s1">&#39;WATER&#39;</span>
+<span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;superancillaryJSON.tar.xz&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r:xz&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tar</span><span class="p">:</span>
+    <span class="c1"># for member in tar.getmembers(): print(member)</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">tar</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">FLD</span><span class="si">}</span><span class="s1">_exps.json&#39;</span><span class="p">))</span>
+<span class="n">sa</span> <span class="o">=</span> <span class="n">teqpflsh</span><span class="o">.</span><span class="n">SuperAncillary</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+
+<span class="n">ca</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_approx1d</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Water has non-monotonic rho</span><span class="se">\&#39;</span><span class="s1">(T). The monotonic intervals are:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">inter</span> <span class="ow">in</span> <span class="n">ca</span><span class="o">.</span><span class="n">monotonic_intervals</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="n">inter</span><span class="o">.</span><span class="n">xmin</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">inter</span><span class="o">.</span><span class="n">xmax</span><span class="si">}</span><span class="s1">) K&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Water has non-monotonic rho&#39;(T). The monotonic intervals are:
+(273.16, 277.15003423906836) K
+(277.15003423906836, 647.0959999999867) K
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AS</span> <span class="o">=</span> <span class="n">CP</span><span class="o">.</span><span class="n">AbstractState</span><span class="p">(</span><span class="s1">&#39;HEOS&#39;</span><span class="p">,</span> <span class="s1">&#39;Water&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">AS</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">AS</span><span class="o">.</span><span class="n">specify_phase</span><span class="p">(</span><span class="n">CP</span><span class="o">.</span><span class="n">iphase_gas</span><span class="p">)</span>
+    <span class="n">AS</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CP</span><span class="o">.</span><span class="n">DmolarT_INPUTS</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">AS</span><span class="o">.</span><span class="n">keyed_output</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">AS</span><span class="o">.</span><span class="n">unspecify_phase</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">val</span>
+
+<span class="c1"># Add another thermodynamic variable to the superancillary</span>
+<span class="c1"># Speed is order of ms per variable, likely MUCH faster in C++</span>
+<span class="c1"># caller is a callable function that takes temperature and density and returns a value of a given property type</span>
+<span class="c1"># here we can avoid flash calculations because we take T,rho value from the superancillary and</span>
+<span class="c1"># get values for the &quot;other&quot; variable</span>
+<span class="n">sa</span><span class="o">.</span><span class="n">add_variable</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="n">caller</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">AS</span><span class="o">=</span><span class="n">AS</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">CP</span><span class="o">.</span><span class="n">iHmolar</span><span class="p">))</span>
+<span class="n">sa</span><span class="o">.</span><span class="n">add_variable</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">caller</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">AS</span><span class="o">=</span><span class="n">AS</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">CP</span><span class="o">.</span><span class="n">iSmolar</span><span class="p">))</span>
+<span class="n">sa</span><span class="o">.</span><span class="n">add_variable</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="n">caller</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">AS</span><span class="o">=</span><span class="n">AS</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">CP</span><span class="o">.</span><span class="n">iUmolar</span><span class="p">))</span>
+
+<span class="c1"># Here is the call signature for the method</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">add_variable</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+add_variable(self, *, k: str, caller: collections.abc.Callable[[float, float], float]) -&gt; None
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solving for temperature given saturated liquid density, around the density maximum</span>
+<span class="c1"># as a challenging test for the rootfinding. The approach works well, even very close(!)</span>
+<span class="c1"># to the extremum</span>
+
+<span class="n">ca</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_approx1d</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The monotonic intervals are:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">inter</span> <span class="ow">in</span> <span class="n">ca</span><span class="o">.</span><span class="n">monotonic_intervals</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="n">inter</span><span class="o">.</span><span class="n">xmin</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">inter</span><span class="o">.</span><span class="n">xmax</span><span class="si">}</span><span class="s1">) K&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T at extrema in rho(T):&#39;</span><span class="p">,</span> <span class="n">ca</span><span class="o">.</span><span class="n">x_at_extrema</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;and corresponding value&#39;</span><span class="p">,</span> <span class="n">ca</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">ca</span><span class="o">.</span><span class="n">x_at_extrema</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;mol/m³&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">Trange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">ca</span><span class="o">.</span><span class="n">x_at_extrema</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Trange</span><span class="p">,</span> <span class="p">[</span><span class="n">ca</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">Trange</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$T$ / K&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\rho$ / mol/m$^3$&#39;</span><span class="p">)</span>
+
+<span class="c1"># Starting at a density below the extremum, test getting</span>
+<span class="c1"># very close to the extremum and solving for temperature</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">y_extremum</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">ca</span><span class="o">.</span><span class="n">x_at_extrema</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">y_extremum</span> <span class="o">-</span> <span class="mf">0.9999</span><span class="o">*</span><span class="n">y_extremum</span>
+
+<span class="k">while</span> <span class="n">delta</span> <span class="o">&gt;</span> <span class="mf">1e-13</span><span class="p">:</span>
+    <span class="c1"># First output argument is the solution, second is the number of iterations required</span>
+    <span class="n">Tsoln</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">get_x_for_y</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y_extremum</span><span class="o">-</span><span class="n">delta</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Tsoln</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">if</span> <span class="n">Tsoln</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">Tsoln</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">break</span>
+
+    <span class="n">delta</span> <span class="o">/=</span> <span class="mf">1.1</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">Tsoln</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ca</span><span class="o">.</span><span class="n">x_at_extrema</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">Tsoln</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ca</span><span class="o">.</span><span class="n">x_at_extrema</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;bx&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;symlog&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\rho-\rho_{\rm extremum}$ / mol/m$^3$&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$T-T_{\rm extremum}$ / K&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$T(\rho)$ which should have two solutions for all $\rho &lt; \rho_{\rm extremum}$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The monotonic intervals are:
+(273.16, 277.15003423906836) K
+(277.15003423906836, 647.0959999999867) K
+T at extrema in rho(T): [277.15003423906836] K
+and corresponding value 55504.316178396366 mol/m³
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/superancillary_SuperancillaryWater_5_1.png" src="../_images/superancillary_SuperancillaryWater_5_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/superancillary_SuperancillaryWater_5_2.png" src="../_images/superancillary_SuperancillaryWater_5_2.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Time forward evalution of a chebyshev expansion</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">273.16</span><span class="p">,</span> <span class="mi">290</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>
+<span class="n">ybuf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="n">tic</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="n">ca</span><span class="o">.</span><span class="n">eval_many</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">ybuf</span><span class="p">)</span>
+<span class="n">toc</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rho(T) takes&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">toc</span><span class="o">-</span><span class="n">tic</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="s1">&#39;μs/call&#39;</span><span class="p">)</span>
+
+<span class="c1"># Time the rootfinding in the superancillary</span>
+<span class="n">tic</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="n">ybuf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">55400</span><span class="p">,</span> <span class="mi">55503</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>
+<span class="n">xbuf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">ybuf</span><span class="p">)</span>
+<span class="n">ca</span><span class="o">.</span><span class="n">count_x_for_y_many</span><span class="p">(</span><span class="n">ybuf</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">,</span> <span class="n">xbuf</span><span class="p">)</span>
+<span class="n">toc</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T(rho) takes&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">toc</span><span class="o">-</span><span class="n">tic</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">xbuf</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="s1">&#39;μs/call&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;so the inversion is much slower, and here there are two candidate regions, so it is again two times worse than normal fluids, which would be more like:&#39;</span><span class="p">)</span>
+
+<span class="n">tic</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="n">ybuf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">20400</span><span class="p">,</span> <span class="mi">20503</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>
+<span class="n">xbuf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">ybuf</span><span class="p">)</span>
+<span class="n">ca</span><span class="o">.</span><span class="n">count_x_for_y_many</span><span class="p">(</span><span class="n">ybuf</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">,</span> <span class="n">xbuf</span><span class="p">)</span>
+<span class="n">toc</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T(rho) takes&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">toc</span><span class="o">-</span><span class="n">tic</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">xbuf</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="s1">&#39;μs/call when there is only one solution&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+rho(T) takes 0.016125665977597237 μs/call
+T(rho) takes 0.6450482499785721 μs/call
+so the inversion is much slower, and here there are two candidate regions, so it is again two times worse than normal fluids, which would be more like:
+T(rho) takes 0.45679099997505546 μs/call when there is only one solution
+</pre></div></div>
+</div>
+<p>Rootfinding is based on the TOMS748 method, which is an advanced version of the Brent method that is bounded and uses the optimal combination of secant, quadratic, and cubic interpolation mixed with bisection.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_K</span><span class="p">,</span> <span class="n">steps</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">get_x_for_y</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">20250</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">steps</span><span class="si">}</span><span class="s1"> iterations were required&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+7 iterations were required
+</pre></div></div>
+</div>
+<p>which is about that much higher than the forward evaluation of a superancillary itself</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ca</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_approx1d</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">rhoc</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">monotonic_intervals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ymin</span>
+
+<span class="c1"># Pick a density where there is only one possible solution for temperature</span>
+<span class="k">for</span> <span class="n">D</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">22082.571366851185</span><span class="p">]:</span>
+
+    <span class="c1"># Get the saturation temperature, if possible</span>
+    <span class="n">Tlims</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">ca</span><span class="o">.</span><span class="n">get_x_for_y</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">D</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Tlims</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">Trange</span> <span class="o">=</span> <span class="p">[</span><span class="n">ca</span><span class="o">.</span><span class="n">expansions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xmin</span><span class="p">,</span> <span class="n">Tlims</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">Trange</span> <span class="o">=</span> <span class="p">[</span><span class="n">Tlims</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">Tlims</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
+
+    <span class="n">Ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">Trange</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+    <span class="c1"># Non-iteratively solve for q for value of density</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">sa</span><span class="o">.</span><span class="n">get_vaporquality</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T_</span><span class="p">,</span> <span class="n">propval</span><span class="o">=</span><span class="n">D</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">T_</span> <span class="ow">in</span> <span class="n">Ts</span><span class="p">])</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># And then plot another property</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="n">tic</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">get_yval_many</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">Ts</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">toc</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">((</span><span class="n">toc</span><span class="o">-</span><span class="n">tic</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="s1">&#39;μs/call&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ts</span><span class="p">,</span> <span class="n">q</span><span class="p">,)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ts</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">D</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;$q$ (vapor quality)&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;$T$ / K&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;$h$ / J/mol&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.005306542036123574 μs/call
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/superancillary_SuperancillaryWater_10_1.png" src="../_images/superancillary_SuperancillaryWater_10_1.png" />
+</div>
+</div>
+<p>Plot lines of constant quality in the two-phase region according to the superancillary functions</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>
+<span class="n">Tt</span> <span class="o">=</span> <span class="mf">273.16</span>
+<span class="n">Tc</span> <span class="o">=</span> <span class="mf">647.0959999999867</span>
+
+<span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Tt</span><span class="p">,</span> <span class="n">Tc</span><span class="o">-</span><span class="n">eps</span><span class="p">,</span> <span class="mi">10000</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_yval</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="s1">&#39;P&#39;</span><span class="p">)</span>
+    <span class="n">Tnew</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_T_from_p</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">DELTAT</span> <span class="o">=</span> <span class="n">Tnew</span><span class="o">-</span><span class="n">T</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">DELTAT</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.001</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">Tnew</span><span class="o">-</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">caV</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_approx1d</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># for interval in caV.monotonic_intervals:</span>
+<span class="c1">#     print(interval)</span>
+<span class="c1">#     print({k: getattr(interval,k) for k in dir(interval) if not k.startswith(&#39;__&#39;)})</span>
+<span class="c1">#     for m in interval.expansioninfo:</span>
+<span class="c1">#         print({k: getattr(m,k) for k in dir(m) if not k.startswith(&#39;__&#39;)})</span>
+<span class="c1">#         print(m.xmin, m.xmax)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">caV</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mf">273.16</span><span class="p">),</span> <span class="n">caV</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mf">647.096</span><span class="p">),</span> <span class="n">caV</span><span class="o">.</span><span class="n">get_x_for_y</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">200</span><span class="p">))</span>
+
+<span class="c1"># print([0].ymin, caV.monotonic_intervals[0].ymax)</span>
+<span class="c1"># print(caV.get_x_for_y(y=200))</span>
+
+<span class="n">ca</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_approx1d</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">ca</span><span class="o">.</span><span class="n">x_at_extrema</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mf">0.9999</span>
+<span class="n">Tlims</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">ca</span><span class="o">.</span><span class="n">get_x_for_y</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)]</span>
+
+<span class="n">Ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ca</span><span class="o">.</span><span class="n">expansions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xmin</span><span class="o">+</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">ca</span><span class="o">.</span><span class="n">expansions</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xmax</span><span class="o">-</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="c1"># Ts = np.linspace(273.1600001, 280, 10000)</span>
+
+<span class="k">for</span> <span class="n">Q</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
+    <span class="n">Qs</span> <span class="o">=</span> <span class="n">Q</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span>
+
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">get_yval_many</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">Ts</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">Qs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">rho</span><span class="p">)</span>
+
+    <span class="n">other</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span>
+    <span class="n">kother</span> <span class="o">=</span> <span class="s1">&#39;S&#39;</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">get_yval_many</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">Ts</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">Qs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">kother</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">other</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">rho</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="n">Tbuf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span>
+    <span class="n">qbuf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span>
+    <span class="n">countbuf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span>
+    <span class="n">tic</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">solve_for_Tq_DX_many</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">kother</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">,</span> <span class="n">Tbuf</span><span class="p">,</span> <span class="n">qbuf</span><span class="p">,</span> <span class="n">countbuf</span><span class="p">)</span>
+    <span class="n">toc</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">((</span><span class="n">toc</span><span class="o">-</span><span class="n">tic</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">Tbuf</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="s1">&#39;μs/call from&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">countbuf</span><span class="p">),</span> <span class="s1">&#39;steps on average&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">T_goal_</span><span class="p">,</span> <span class="n">rho_</span><span class="p">,</span> <span class="n">other_</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">Ts</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">soln</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">solve_for_Tq_DX</span><span class="p">(</span><span class="n">rho_</span><span class="p">,</span> <span class="n">other_</span><span class="p">,</span> <span class="n">kother</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">T_</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">T</span><span class="p">;</span> <span class="n">q_</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">q</span><span class="p">;</span> <span class="n">count_</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">counter</span>
+        <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">be</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">rho_</span><span class="p">,</span> <span class="n">other_</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">be</span><span class="p">,</span> <span class="n">T_goal_</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">rho_</span><span class="p">,</span> <span class="n">other_</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="c1"># plt.yscale(&#39;log&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.2694700808656397 17873.7282300601 [(437.3594696512889, 10)]
+1.4787499094381928 μs/call from 5.3 steps on average
+1.970840385183692 μs/call from 8.17 steps on average
+2.230409882031381 μs/call from 9.6 steps on average
+2.2991601144894958 μs/call from 10.12 steps on average
+2.3312499979510903 μs/call from 10.27 steps on average
+2.40708002820611 μs/call from 10.58 steps on average
+2.4075002875179052 μs/call from 10.59 steps on average
+2.4258403573185205 μs/call from 10.79 steps on average
+2.9266695491969585 μs/call from 10.46 steps on average
+2.4391600163653493 μs/call from 9.92 steps on average
+1.431250129826367 μs/call from 5.23 steps on average
+1.4441600069403648 μs/call from 5.32 steps on average
+1.497499761171639 μs/call from 5.2 steps on average
+1.4208396896719933 μs/call from 5.19 steps on average
+1.4154094969853759 μs/call from 5.2 steps on average
+1.4266703510656953 μs/call from 5.25 steps on average
+1.413749996572733 μs/call from 5.23 steps on average
+1.5320797683671117 μs/call from 5.3 steps on average
+1.4416599879041314 μs/call from 5.36 steps on average
+1.4595797983929515 μs/call from 5.56 steps on average
+1.5179102774709463 μs/call from 5.65 steps on average
+1.5229103155434132 μs/call from 5.7 steps on average
+1.5283300308510661 μs/call from 5.79 steps on average
+1.5508296201005578 μs/call from 5.95 steps on average
+1.604580320417881 μs/call from 6.03 steps on average
+1.5791598707437515 μs/call from 6.08 steps on average
+1.590839819982648 μs/call from 6.13 steps on average
+1.5712500317022204 μs/call from 6.05 steps on average
+1.6354199033230543 μs/call from 6.2 steps on average
+1.5858298866078258 μs/call from 6.12 steps on average
+1.5791598707437515 μs/call from 6.11 steps on average
+1.5845795860514045 μs/call from 6.15 steps on average
+1.5899998834356666 μs/call from 6.2 steps on average
+1.6104202950373292 μs/call from 6.3 steps on average
+1.736659905873239 μs/call from 6.71 steps on average
+1.7420802032575011 μs/call from 6.94 steps on average
+1.8787500448524952 μs/call from 7.27 steps on average
+1.9300001440569758 μs/call from 7.41 steps on average
+1.8570898100733757 μs/call from 7.45 steps on average
+1.9204203272238374 μs/call from 8.04 steps on average
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/superancillary_SuperancillaryWater_13_1.png" src="../_images/superancillary_SuperancillaryWater_13_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>
+
+<span class="n">Tt</span> <span class="o">=</span> <span class="mf">273.16</span>
+<span class="n">Tc</span> <span class="o">=</span> <span class="mf">647.0959999999867</span>
+
+<span class="c1"># A class storing the info for a single two-phase point</span>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">TwoPhasePoint</span><span class="p">:</span>
+    <span class="n">T</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">Q</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">D</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">H</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">S</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">U</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">P</span><span class="p">:</span> <span class="nb">float</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">TwoPhaseResult</span><span class="p">:</span>
+    <span class="n">Terr</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">Qerr</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">elap_us</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">count</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">proppair</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+
+<span class="c1"># Build up database of points for two-phase data</span>
+<span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Tt</span><span class="p">,</span> <span class="n">Tc</span><span class="o">-</span><span class="n">eps</span><span class="p">,</span> <span class="mi">300</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">eps</span><span class="p">,</span> <span class="mi">500</span><span class="p">):</span>
+        <span class="n">pt</span> <span class="o">=</span> <span class="n">TwoPhasePoint</span><span class="p">(</span>
+            <span class="n">T</span> <span class="o">=</span> <span class="n">T</span><span class="p">,</span>
+            <span class="n">Q</span> <span class="o">=</span> <span class="n">q</span><span class="p">,</span>
+            <span class="n">P</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_yval</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="s1">&#39;P&#39;</span><span class="p">),</span>
+            <span class="n">D</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_yval</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">),</span>
+            <span class="n">H</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_yval</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">),</span>
+            <span class="n">S</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_yval</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="s1">&#39;S&#39;</span><span class="p">),</span>
+            <span class="n">U</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">get_yval</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="s1">&#39;U&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+
+<span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">]</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">proppair</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">proppair</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">proppair</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">proppair</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">]:</span> <span class="k">continue</span>
+    <span class="k">if</span> <span class="n">proppair</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">]:</span> <span class="k">continue</span>
+
+    <span class="n">val1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">getattr</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">proppair</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">points</span><span class="p">])</span>
+    <span class="n">val2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">getattr</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">proppair</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">points</span><span class="p">])</span>
+
+    <span class="n">flash_key</span> <span class="o">=</span> <span class="n">teqpflsh</span><span class="o">.</span><span class="n">get_pair_from_chars</span><span class="p">(</span><span class="o">*</span><span class="n">proppair</span><span class="p">)</span>
+    <span class="n">tic</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">val1</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">val2</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">val2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">flash_many</span><span class="p">(</span><span class="n">flash_key</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+    <span class="n">toc</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+
+    <span class="n">valQ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">getattr</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">points</span><span class="p">])</span>
+    <span class="n">valT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">getattr</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">points</span><span class="p">])</span>
+
+    <span class="n">DELTAT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">valT</span><span class="o">-</span><span class="n">T</span><span class="p">))</span>
+    <span class="n">badsolns</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">T</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">#</span>
+
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TwoPhaseResult</span><span class="p">(</span>
+        <span class="n">elap_us</span><span class="o">=</span><span class="p">(</span><span class="n">toc</span><span class="o">-</span><span class="n">tic</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">val1</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span>
+        <span class="n">Terr</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">valT</span><span class="o">-</span><span class="n">T</span><span class="p">)))),</span>
+        <span class="n">Qerr</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">valQ</span><span class="o">-</span><span class="n">q</span><span class="p">)))),</span>
+        <span class="n">count</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">count</span><span class="p">)),</span>
+        <span class="n">proppair</span><span class="o">=</span><span class="n">proppair</span>
+    <span class="p">))</span>
+
+<span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">elap_us</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+TwoPhaseResult(Terr=0.0, Qerr=2.795420235938882e-16, elap_us=0.05967111326754093, count=0.0, proppair=[&#39;D&#39;, &#39;T&#39;])
+TwoPhaseResult(Terr=0.0, Qerr=8.929621463779706e-16, elap_us=0.06645833336127302, count=0.0, proppair=[&#39;T&#39;, &#39;U&#39;])
+TwoPhaseResult(Terr=0.0, Qerr=1.1279329866925603e-15, elap_us=0.06656027981080115, count=0.0, proppair=[&#39;S&#39;, &#39;T&#39;])
+TwoPhaseResult(Terr=0.0, Qerr=7.645675477278846e-16, elap_us=0.06656500006405015, count=0.0, proppair=[&#39;H&#39;, &#39;T&#39;])
+TwoPhaseResult(Terr=7.164476301113609e-13, Qerr=7.684752486105178e-10, elap_us=0.12980527981805304, count=0.0, proppair=[&#39;D&#39;, &#39;P&#39;])
+TwoPhaseResult(Terr=7.164476301113609e-13, Qerr=7.684694347776641e-10, elap_us=0.1314924998829762, count=0.0, proppair=[&#39;P&#39;, &#39;S&#39;])
+TwoPhaseResult(Terr=7.164476301113609e-13, Qerr=7.684689638248323e-10, elap_us=0.13159055340414247, count=0.0, proppair=[&#39;P&#39;, &#39;U&#39;])
+TwoPhaseResult(Terr=7.164476301113609e-13, Qerr=7.684687278664324e-10, elap_us=0.13510666671209037, count=0.0, proppair=[&#39;H&#39;, &#39;P&#39;])
+TwoPhaseResult(Terr=9.051291272044182e-14, Qerr=2.2156901951207798e-11, elap_us=2.0759752734253807, count=0.0, proppair=[&#39;S&#39;, &#39;U&#39;])
+TwoPhaseResult(Terr=1.6613512343610638e-13, Qerr=1.0721330329692832e-10, elap_us=2.202141946569706, count=0.0, proppair=[&#39;H&#39;, &#39;S&#39;])
+TwoPhaseResult(Terr=2.3948511322184155e-14, Qerr=2.2876501559810492e-11, elap_us=2.232273886911571, count=0.0, proppair=[&#39;D&#39;, &#39;S&#39;])
+TwoPhaseResult(Terr=2.379654991576293e-14, Qerr=1.6898106011334103e-11, elap_us=2.3842438865297786, count=0.0, proppair=[&#39;D&#39;, &#39;U&#39;])
+TwoPhaseResult(Terr=2.4474881380835237e-14, Qerr=1.7895061607415564e-11, elap_us=2.4198447268766663, count=0.0, proppair=[&#39;D&#39;, &#39;H&#39;])
+</pre></div></div>
+</div>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="SuperancillaryIterations.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Superancillary iterations</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">SuperAncillary</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Ian Bell
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=65a4545c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>
