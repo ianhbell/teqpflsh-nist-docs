@@ -9,6 +9,7 @@ dependencies:
   - cmake
   - pandoc
   - pip:
+    - furo
     - sympy
     - numpy 
     - pandas

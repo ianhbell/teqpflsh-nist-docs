@@ -23,7 +23,7 @@ here = os.path.dirname(__file__)
 # shutil.copy2("externals/teqp/doc-BORGED/macros.tex", "externals/teqp/doc")
 
 # And now run doxygen and execute jupyter notebooks
-os.chdir('externals/teqp/doc/source')
+os.chdir('externals/teqpflsh/doc/source')
 sys.path.append(os.path.abspath(os.curdir))
 os.environ['PYDEVD_DISABLE_FILE_VALIDATION'] = '1'
 import sphinx_pre_run

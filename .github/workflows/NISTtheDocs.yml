@@ -14,9 +14,9 @@ jobs:
         with:
           docs-folder: externals/teqpflsh/doc/
           apt-packages: texlive-font-utils
-          conda-environment: environment.yml
+          conda-environment: externals/teqpflsh/doc/environment.yml
           pre-borg-command: python prepare_build.py
-          pre-build-command: rm -rf externals/teqp/doc-BORGED/build
+          pre-build-command: rm -rf externals/teqpflsh/doc-BORGED/build
           # post-borg-command: echo "hi"
           # post-build-command: |-
           #   cp externals/teqp/doc-BORGED/build/latex/teqp.pdf externals/teqp/doc-BORGED/build/latex/teqp-docs.pdf
