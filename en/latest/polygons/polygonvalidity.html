@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="K-D tree lookup" href="../KDtree/index.html" /><link rel="prev" title="Polygon operations" href="polygonoperations.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Polygon validation - teqpflsh 0.0.3 documentation</title>
+        <title>Polygon validation - teqpflsh 0.0.4 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=d4d0e21c" />
     <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
@@ -167,7 +167,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">teqpflsh 0.0.3 documentation</div></a>
+      <a href="../index.html"><div class="brand">teqpflsh 0.0.4 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -191,7 +191,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">teqpflsh 0.0.3 documentation</span>
+  <span class="sidebar-brand-text">teqpflsh 0.0.4 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -266,15 +266,25 @@
           <section id="Polygon-validation">
 <h1>Polygon validation<a class="headerlink" href="#Polygon-validation" title="Permalink to this heading">¶</a></h1>
 <p>Making the polygons be non-self-intersecting is critical. There are routines in GEOS (and exposed in teqpflsh) to break up self-intersecting polygons into non-self-intersecting polygons</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">teqpflsh</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">teqpflsh</span><span class="o">.</span><span class="n">__version__</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;0.0.4&#39;
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -308,9 +318,37 @@ False
 <img alt="../_images/polygons_polygonvalidity_2_1.png" src="../_images/polygons_polygonvalidity_2_1.png" />
 </div>
 </div>
-<p>Now we need to break up the polygon into portions that are simple (non self-intersecting) with the MakeValid class of geos : <a class="reference external" href="https://libgeos.org/doxygen/classgeos_1_1operation_1_1valid_1_1MakeValid.html">https://libgeos.org/doxygen/classgeos_1_1operation_1_1valid_1_1MakeValid.html</a></p>
+<p>The reason this matters in this context is that we need to be able to sample the domain randomly to generate guess values.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This doesn&#39;t work because the triangulation fails because the geometry is not valid</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="p">))</span>
+<span class="n">teqpflsh</span><span class="o">.</span><span class="n">sample_random</span><span class="p">(</span><span class="n">poly1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">RuntimeError</span>                              Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[3], line 5</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> x <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>zeros((N, ))
+<span class="ansi-green-intense-fg ansi-bold">      4</span> y <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>zeros((N, ))
+<span class="ansi-green-fg">----&gt; 5</span> <span class="ansi-yellow-bg">teqpflsh</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">sample_random</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">poly1</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">10000</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">y</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-fg">RuntimeError</span>: IllegalStateException: Unable to find a convex corner
+</pre></div></div>
+</div>
+<p>Now we need to break up the polygon into portions that are simple (non self-intersecting) with the MakeValid class of geos : <a class="reference external" href="https://libgeos.org/doxygen/classgeos_1_1operation_1_1valid_1_1MakeValid.html">https://libgeos.org/doxygen/classgeos_1_1operation_1_1valid_1_1MakeValid.html</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simpl</span> <span class="o">=</span> <span class="n">poly1</span><span class="o">.</span><span class="n">make_valid</span><span class="p">()</span>
@@ -346,7 +384,27 @@ valid: True
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/polygons_polygonvalidity_4_1.png" src="../_images/polygons_polygonvalidity_4_1.png" />
+<img alt="../_images/polygons_polygonvalidity_6_1.png" src="../_images/polygons_polygonvalidity_6_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># And now sampling works after forcing validity</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="p">))</span>
+<span class="n">teqpflsh</span><span class="o">.</span><span class="n">sample_random</span><span class="p">(</span><span class="n">simpl</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/polygons_polygonvalidity_7_0.png" src="../_images/polygons_polygonvalidity_7_0.png" />
 </div>
 </div>
 </section>
@@ -400,7 +458,7 @@ valid: True
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=65a4545c"></script>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=ae2dc491"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>

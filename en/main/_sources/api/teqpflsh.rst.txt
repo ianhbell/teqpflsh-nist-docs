@@ -806,6 +806,10 @@ teqpflsh Package
 
     :teqpflsh:`indexer33`
 
+.. autofunction:: teqpflsh._teqpflsh_impl.sample_random
+
+    :teqpflsh:`sample_random`
+
 .. autoclass:: teqpflsh._teqpflsh_impl.teqpHelmholtzInterface
     :show-inheritance:
 
